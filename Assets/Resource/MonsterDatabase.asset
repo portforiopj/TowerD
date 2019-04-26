@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8fd7b2a2315974d84cc6c2ebc631a2, type: 3}
+  m_Name: MonsterDatabase
+  m_EditorClassIdentifier: 
+  MonstersList:
+  - M_num: 0
+    M_name: M_0
+    M_hp: 1
+    M_dmg: 1
+    M_movs: 3
+    M_buff: 
+    M_gold: 1
+    M_prefab_ob: {fileID: 2037675453945131305, guid: 357d8229519c1c64d80605e44c2ed5c1,
+      type: 3}
+    M_monsterType: 0
+    M_sprite: {fileID: 0}
+  - M_num: 1
+    M_name: M_1
+    M_hp: 1
+    M_dmg: 1
+    M_movs: 1
+    M_buff: 
+    M_gold: 0
+    M_prefab_ob: {fileID: 2037675453945131305, guid: 60de79fb26c0da34192fad970b378669,
+      type: 3}
+    M_monsterType: 1
+    M_sprite: {fileID: 0}
+  - M_num: 2
+    M_name: M_2
+    M_hp: 1
+    M_dmg: 1
+    M_movs: 3
+    M_buff: 
+    M_gold: 1
+    M_prefab_ob: {fileID: 2037675453945131305, guid: 5d7e7ec636d8c564b89fc2f2e3fe4f29,
+      type: 3}
+    M_monsterType: 2
+    M_sprite: {fileID: 0}
+  - M_num: 3
+    M_name: M_3
+    M_hp: 1
+    M_dmg: 1
+    M_movs: 3
+    M_buff: 
+    M_gold: 1
+    M_prefab_ob: {fileID: 2037675453945131305, guid: 38187d6921a8c8a4f8c1f785fd69d7f1,
+      type: 3}
+    M_monsterType: 0
+    M_sprite: {fileID: 0}
+  - M_num: 4
+    M_name: M_4
+    M_hp: 0
+    M_dmg: 0
+    M_movs: 0
+    M_buff: 
+    M_gold: 0
+    M_prefab_ob: {fileID: 2037675453945131305, guid: 018125a9fa4d48a44b18a7d966822f2b,
+      type: 3}
+    M_monsterType: 0
+    M_sprite: {fileID: 0}

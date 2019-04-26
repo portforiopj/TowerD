@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6677113348650508469}
   - component: {fileID: 4124393161677981485}
   - component: {fileID: 8937562821054621446}
+  - component: {fileID: -1820541182740295762}
   m_Layer: 0
   m_Name: Tower 6
   m_TagString: Untagged
@@ -112,4 +113,45 @@ MonoBehaviour:
   T_Dmr: 0
   T_Ats: 0
   T_buffs: 0000000000
+  T_monster:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  T_state: 0
   T_type: 0
+--- !u!95 &-1820541182740295762
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7239570034891863661}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 18e11f8374a252f46bc2218ab5e4b424, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53acc2e871e2b344a918ff6f012b7c74, type: 3}
+  m_Name: TowerDatabase
+  m_EditorClassIdentifier: 
+  TowersList:
+  - T_num: 0
+    T_hp: 1
+    T_maxhp: 1
+    T_name: brokentower
+    T_dmg: 1
+    T_Dmr: 1
+    T_Ats: 1
+    T_buffs: 
+    T_buygold: 
+    T_towertype: 0
+    T_sprite: {fileID: 0}
+  - T_num: 1
+    T_hp: 10
+    T_maxhp: 10
+    T_name: hdl
+    T_dmg: 6
+    T_Dmr: 23
+    T_Ats: 1
+    T_buffs: 
+    T_buygold: 
+    T_towertype: 0
+    T_sprite: {fileID: 0}
+  - T_num: 2
+    T_hp: 10
+    T_maxhp: 10
+    T_name: fkhdl
+    T_dmg: 9
+    T_Dmr: 35
+    T_Ats: 2
+    T_buffs: 
+    T_buygold: 
+    T_towertype: 0
+    T_sprite: {fileID: 0}
+  - T_num: 3
+    T_hp: 10
+    T_maxhp: 10
+    T_name: spdajsd
+    T_dmg: 6
+    T_Dmr: 8
+    T_Ats: 1.4
+    T_buffs: 
+    T_buygold: 
+    T_towertype: 0
+    T_sprite: {fileID: 0}
+  - T_num: 4
+    T_hp: 10
+    T_maxhp: 10
+    T_name: asdad
+    T_dmg: 23
+    T_Dmr: 4
+    T_Ats: 1.5
+    T_buffs: 
+    T_buygold: 
+    T_towertype: 0
+    T_sprite: {fileID: 0}
+  - T_num: 5
+    T_hp: 10
+    T_maxhp: 10
+    T_name: sdgundam
+    T_dmg: 1
+    T_Dmr: 3
+    T_Ats: 0.8
+    T_buffs: 
+    T_buygold: 
+    T_towertype: 0
+    T_sprite: {fileID: 0}
+  - T_num: 6
+    T_hp: 10
+    T_maxhp: 10
+    T_name: nandayo
+    T_dmg: 13
+    T_Dmr: 6
+    T_Ats: 1.2
+    T_buffs: 
+    T_buygold: 
+    T_towertype: 0
+    T_sprite: {fileID: 0}

@@ -57,9 +57,9 @@ public class GameSystem : MonoBehaviour
         if(Starting)
         G_state = GameState.Play;
     }
-    public void NumSentNode()
+    public void NumSentNode(int i)
     {
-        Node.N_num = 5;
+        Node.N_num = i;
     }
     public IEnumerator ResultText(Text text,string String)
     {

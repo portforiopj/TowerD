@@ -57,18 +57,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050967d59af6caa4fbe8d97fb297e5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  M_num: 0
+  M_num: 4
   M_name: 
-  M_hp: 0
-  M_dmg: 0
-  M_movs: 0
+  M_hp: 20
+  M_dmg: 6
+  M_movs: 4
   M_buff: 0000
   M_gold: 0
-  M_prefab_ob: {fileID: 0}
   M_monsterType: 0
   M_sprite: {fileID: 0}
   M_tilePass: {fileID: 0}
-  M_monsters: []
 --- !u!23 &2613884870431054882
 MeshRenderer:
   m_ObjectHideFlags: 0

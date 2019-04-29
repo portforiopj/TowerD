@@ -34,13 +34,13 @@ public class Player : MonoBehaviour
         {
 
             case PlayerState.Idle:
-                P_anim.SetInteger("P_state",(int)PlayerState.Idle);
+                P_anim.Play("PlayerIdle");
                 break;
             case PlayerState.Skill:
-                P_anim.SetInteger("P_state", (int)PlayerState.Skill);
+                P_anim.Play("PlayerSkill");
                 break;
             case PlayerState.Die:
-                P_anim.SetInteger("P_state", (int)PlayerState.Die);
+                P_anim.Play("PlayerDie");
                 break;
             
         }

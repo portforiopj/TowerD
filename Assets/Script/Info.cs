@@ -34,7 +34,7 @@ public class Info : MonoBehaviour
     }
     void Start()
     {
-        Debug.Log( I_tower_ob[0].GetComponent<Tower>().T_num);
+        
     }
 
     // Update is called once per frame

@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7239570034891863661}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 505f6fc651fdd5b43a899d7900f7f30e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,14 +93,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   T_num: 5
-  T_hp: 10
+  T_hp: 0
   T_maxhp: 10
   T_name: 
   T_dmg: 5
   T_Dmr: 4
   T_Ats: 0.8
   T_buffs: 
-  T_buygold: 
+  T_buygold: 000000000000000000000000
   T_towertype: 0
   T_sprite: {fileID: 0}
   T_type: 0

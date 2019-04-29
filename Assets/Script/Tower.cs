@@ -55,28 +55,26 @@ public class Tower : MonoBehaviour
         {
 
             case TowerState.Idle:
-                T_anim.SetInteger("T_state", (int)TowerState.Idle);
+                T_anim.Play("TowerIdle");
                 break;
             case TowerState.Attack:
-                T_anim.SetInteger("T_state", (int)TowerState.Attack);
+                T_anim.Play("TowerAttack");
                 break;
             case TowerState.Die:
-                T_anim.SetInteger("T_state", (int)TowerState.Die);
+                T_anim.Play("TowerDie");
                 break;
 
         }
     }
+    void OnMouseDown()
+    {
+        GameSystem.Instatce.G_tower_info = gameObject;
+        GameSystem.Instatce.TowerOpenState(true);
+    }
     public void IDleTower()
     {
-        T_monsters2 = GameObject.FindGameObjectsWithTag("Monster");
-        if (T_monsters2.Length > 0)
-        {
-           
-            T_state = TowerState.Attack;
-            Debug.Log(T_state);
-        }
-        else T_state = TowerState.Idle;
 
+        
         if (T_hp <= 0)
         {
             T_state = TowerState.Die;
@@ -86,11 +84,10 @@ public class Tower : MonoBehaviour
     {
         gameObject.transform.parent.GetComponent<MeshRenderer>()
              .material = Info.Instatnce.I_node_mat[2];
-        Debug.Log(gameObject.transform.GetComponentInParent<MeshRenderer>()
-            .material.color);
+        
         Destroy(gameObject);
     }
-    public IEnumerator AttackTower()
+   IEnumerator AttackTower()
     {
 
         T_Attacking = true;
@@ -105,7 +102,15 @@ public class Tower : MonoBehaviour
             float d = 0;
             for (int j = 0; j < T_monsters2.Length; j++)
             {
-                d = Mathf.Abs(Vector3.Distance(T_monsters2[j].transform.position, T_tr.position));
+                if(T_monsters2.Length == 0)
+                {
+                    break;
+                }               
+                if(T_monsters2[j] == null)
+                {
+                    break;
+                }
+                else d = Mathf.Abs(Vector3.Distance(T_monsters2[j].transform.position, T_tr.position));
                 if (d < distance)
                 {
 
@@ -114,28 +119,46 @@ public class Tower : MonoBehaviour
                     T_monsters2[j] = a;
                     num++;
                 }
-
             }
             if (num != 0)
             {
-
-                T_monsters2[num].GetComponent<Monster>().M_hp -= T_dmg;
-              
+          
+                T_monsters2[num-1].GetComponent<Monster>().M_hp -= T_dmg;
+                if(T_monsters2[num - 1]!= null) {
+                    T_hp -= T_monsters2[num - 1].GetComponent<Monster>().M_dmg;
+                }                
                 yield return new WaitForSeconds(T_Ats);
                 T_state = TowerState.Idle;
             }
         }
+        T_state = TowerState.Idle;
         T_Attacking = false;
     }
-
+    public void TowerAnimationAttack()
+    {
+        if (T_hp <= 0)
+        {
+            T_state = TowerState.Die;
+        }
+        if (!T_Attacking)
+        {
+            StartCoroutine(AttackTower());
+        }
+    }
 
 
     void Update()
     {
         
         TowerPlayState(T_state);
+        T_monsters2 = GameObject.FindGameObjectsWithTag("Monster");
+        if (T_monsters2.Length > 0)
+        {
 
-       
+            T_state = TowerState.Attack;
+        }
+        else T_state = TowerState.Idle;
+        
 
     }
 }

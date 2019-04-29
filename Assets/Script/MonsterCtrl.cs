@@ -9,11 +9,11 @@ public class MonsterCtrl : MonoBehaviour
     public Transform M_gen_tr;
 
     public GameObject[] M_monster_ob ; // 몬스터 종류
-    public int M_count = 0;
+
     public void StartRound() // 유닛 생성
     {
-        GameSystem.Instatce.G_playing = false;
-        
+        GameSystem.Instatce.G_playing = true;
+        GameSystem.Instatce.G_count++;
         for (int k=0; k < M_map_ob.transform.GetChild(0).childCount; k++) // 생성 위치 찾기
         {
             Color a = M_map_ob.transform.GetChild(0).transform.GetChild(k).GetComponent<MeshRenderer>().material.color;
@@ -26,13 +26,8 @@ public class MonsterCtrl : MonoBehaviour
             }
         }
        Instantiate(M_monster_ob[GameSystem.Instatce.G_wave], M_gen_tr.position,Quaternion.identity);
-        if (M_count < GameSystem.Instatce.G_roundunit[GameSystem.Instatce.G_wave] - 1)
-        {
-            
-            M_count++;
-            Invoke("StartRound", GameSystem.Instatce.G_roundgen);
-        }
-        else M_count = 0;
+       
+ 
     }
     void Awake() 
     {

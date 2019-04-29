@@ -26,12 +26,14 @@ public class Node : MonoBehaviour
 
             if (N_num != 0 && N_num != 6)
             {
+                
                 N_instower = Instantiate(Info.Instatnce.I_tower_ob[N_num], new Vector3(gameObject.transform.
                     position.x, gameObject.transform.position.y + 0.5f, gameObject.transform.position.z),
                     Info.Instatnce.I_tower_ob[N_num].transform.rotation);
                 Transform tr = transform;
                 N_instower.transform.parent = tr;
                 N_num = 0;
+
 
             }
             if (N_instower != null)

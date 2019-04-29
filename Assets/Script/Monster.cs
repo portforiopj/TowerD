@@ -34,11 +34,18 @@ public class Monster : MonoBehaviour
     void Update()
     {
         Move();
-
+        if (M_hp <= 0)
+        {
+            DieMonster();
+        }
     }
-    void Die()
+    void DieMonster()
     {
         GameSystem.Instatce.G_gold[(int)M_monsterType] += M_gold; // 타입에 맞춰서 골드 획득
+        Destroy(gameObject);
+    }
+    void DieMonster2()
+    {
         Destroy(gameObject);
     }
     void Move() // 길찾기 함수
@@ -52,7 +59,7 @@ public class Monster : MonoBehaviour
             if (M_count == M_tilePass.T_tile_tr.Length)
             {
                 Player.P_hp -= M_dmg * 2;
-                Die();
+                DieMonster2();
             }
         }
     }

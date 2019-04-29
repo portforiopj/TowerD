@@ -6,6 +6,8 @@ using UnityEngine;
 public class Info : MonoBehaviour
 {
     static Info instance;
+   
+
     public static Info Instatnce
     {
         get
@@ -28,10 +30,11 @@ public class Info : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
     }
     void Start()
     {
-      
+        Debug.Log( I_tower_ob[0].GetComponent<Tower>().T_num);
     }
 
     // Update is called once per frame

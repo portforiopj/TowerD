@@ -6,10 +6,9 @@ public class MonsterCtrl : MonoBehaviour
 {
    
     public GameObject M_map_ob;
-    public MonsterDatabase M_mondata_data;
     public Transform M_gen_tr;
 
-    public GameObject[] M_monster_ob = new GameObject[5]; // 몬스터 종류
+    public GameObject[] M_monster_ob ; // 몬스터 종류
     public int M_count = 0;
     public void StartRound() // 유닛 생성
     {
@@ -21,7 +20,7 @@ public class MonsterCtrl : MonoBehaviour
 
             if (a == Info.Instatnce.I_node_mat[4].color)
             {
-                Debug.Log("");
+
                 M_gen_tr.position = new Vector3(M_map_ob.transform.GetChild(0).transform.GetChild(k).transform.position.x, 0.5f,
                     M_map_ob.transform.GetChild(0).transform.GetChild(k).transform.position.z);
             }
@@ -37,9 +36,7 @@ public class MonsterCtrl : MonoBehaviour
     }
     void Awake() 
     {
-        for(int i=0; i < M_monster_ob.Length; i++) {
-            M_monster_ob[i] = M_mondata_data.MonstersList[i].M_prefab_ob;
-        }
+    
       
     }
     void Start()

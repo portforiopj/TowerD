@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[System.Serializable]
-public class Monster 
+
+public class Monster : MonoBehaviour
 {
     public int M_num;
     public string M_name;
@@ -11,7 +11,6 @@ public class Monster
     public float M_movs;
     public bool[] M_buff=new bool[2];
     public int M_gold;
-    public GameObject M_prefab_ob;
     public enum MonsterType
     {
         Red,
@@ -20,25 +19,45 @@ public class Monster
     }
     public MonsterType M_monsterType;
     public Sprite M_sprite;
-    public Monster() { }
-    public Monster(int num,string name,int hp,int dmg,float movs,int gold,MonsterType monsterType,GameObject ob,Sprite sprite)
+    public TilePass M_tilePass;
+    Transform tr;
+
+    int M_count = 0;
+    void Awake()
     {
-        M_num = num;
-        M_name = name;
-        M_hp = hp;
-        M_dmg = dmg;
-        M_movs = movs;
-        M_gold = gold;
-        M_monsterType = monsterType;
-        M_prefab_ob = ob;
-        M_sprite = sprite;
+        M_tilePass = GameObject.Find("TilePass").GetComponent<TilePass>();
+       
+        tr = GetComponent<Transform>();
+        tr.position = new Vector3(tr.position.x, tr.position.y + 0.5f, tr.position.z);
     }
-   
-  
-    public Monster getCopy()
+
+    void Update()
     {
-        return (Monster)this.MemberwiseClone();
+        Move();
+
     }
-    
-    
+    void Die()
+    {
+        GameSystem.Instatce.G_gold[(int)M_monsterType] += M_gold; // 타입에 맞춰서 골드 획득
+        Destroy(gameObject);
+    }
+    void Move() // 길찾기 함수
+    {
+
+        transform.position = Vector3.MoveTowards(tr.position, M_tilePass.Get_T_tile_tr(M_count).position + new Vector3(0f, 0.5f, 0f)
+        , Time.deltaTime * M_movs);
+        if (Vector3.Distance(transform.position, M_tilePass.Get_T_tile_tr(M_count).position + new Vector3(0f, 0.5f, 0f)) < 0.2)
+        {
+            M_count++;
+            if (M_count == M_tilePass.T_tile_tr.Length)
+            {
+                Player.P_hp -= M_dmg * 2;
+                Die();
+            }
+        }
+    }
+
+
+
+
 }

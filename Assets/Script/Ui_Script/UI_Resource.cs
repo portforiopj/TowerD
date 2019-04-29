@@ -9,50 +9,58 @@ public class UI_Resource : MonoBehaviour
     public GameObject UIres_Effet;
 
     //자원 클릭 시 이펙트 이동 시킬 transform 값
-    public Transform UIres_RedTr;
-    public Transform UIres_BlueTr;
-    public Transform UIres_GreenTr;
+    public Transform[] UIres_tr;
 
+
+    int UI_goldgen;
+    float UI_time;
     //현재 선택한 자원 생성 값
     public string UIres_CurrentResource;
 
 
     void Start()
     {
-        UIres_Effet.transform.position = UIres_RedTr.position;  // Effect의 transform Default 값
+        UIres_Effet.transform.position = UIres_tr[0].position;  // Effect의 transform Default 값
         UIres_CurrentResource = "Red";  // 생성하는 자원 변경에 쓰일 string  Default 값
     }
 
     
     void Update()
     {
-        
-    }
+        if(GameSystem.Instatce.G_state== GameSystem.GameState.Play)
+        {
+            UI_time += Time.deltaTime;
+            if (UI_time > 3f)
+            {
+                UI_time = 0;
+                GameSystem.Instatce.G_gold[UI_goldgen] += 5;
+            }
+        }
+        if (GameSystem.Instatce.G_state != GameSystem.GameState.Play)
+        {
+            UI_time = 0;
+        }
 
-    public void ClickRed()  //빨간거 선택
+
+    }
+    public void ClickGold(int i)
     {
-        UIres_Effet.transform.position = UIres_RedTr.position;  //transform 값으로 이동
-        UIres_CurrentResource = "Red";  // 생성하는 자원 변경에 쓰일 string 값 변경
+        UIres_Effet.transform.position = UIres_tr[i].position;
+        if (i == 0)
+        {
+            UIres_CurrentResource = "Red";
+        }
+        if (i == 1)
+        {
+            UIres_CurrentResource = "Blue";
+        }
+        if (i == 2)
+        {
+            UIres_CurrentResource = "Green";
+        }
+        UI_goldgen = i;
 
-        //test
-        Debug.Log(UIres_CurrentResource);
+
     }
-
-    public void ClickBlue() //파란거 선택
-    {
-        UIres_Effet.transform.position = UIres_BlueTr.position;
-        UIres_CurrentResource = "Blue";
-
-        //test
-        Debug.Log(UIres_CurrentResource);
-    }
-
-    public void ClickGreen()    //초록색 선택
-    {
-        UIres_Effet.transform.position = UIres_GreenTr.position;
-        UIres_CurrentResource = "Green";
-
-        //test
-        Debug.Log(UIres_CurrentResource);
-    }
+  
 }

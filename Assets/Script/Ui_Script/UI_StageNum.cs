@@ -6,16 +6,21 @@ using UnityEngine.UI;
 public class UI_StageNum : MonoBehaviour
 {
     //test 용 정보값
-    int StageNum = 1;
-    int CurrentWave = 1;
+    int StageNum ;
+    int CurrentWave;
     int WaveNum = 6;
-
+    bool Waveset =false;
     public Text UIstg_stgnum;
     public Text UIstg_wavenum;
-
+    void Awake()
+    {
+        
+    }
 
     void Start()
     {
+        StageNum = GameSystem.Instatce.G_round + 1;
+        CurrentWave = GameSystem.Instatce.G_wave + 1;
         SetStgnum();
         SetWavenum();
     }
@@ -23,16 +28,27 @@ public class UI_StageNum : MonoBehaviour
     
     void Update()
     {
-        
+        if(GameSystem.Instatce.G_state== GameSystem.GameState.Ready && !Waveset)
+        {
+            StageNum = GameSystem.Instatce.G_round + 1;
+            CurrentWave = GameSystem.Instatce.G_wave + 1;
+            SetStgnum();
+            SetWavenum();
+            Waveset = true;
+        }
+        if(GameSystem.Instatce.G_state == GameSystem.GameState.Play)
+        {
+            Waveset = false;
+        }
     }
 
     public void SetStgnum()
     {
-        UIstg_stgnum.text = StageNum.ToString();
+        UIstg_stgnum.text ="Stage : "+ StageNum.ToString();
     }
 
     public void SetWavenum()
     {
-        UIstg_wavenum.text = CurrentWave + " / " + WaveNum;
+        UIstg_wavenum.text ="Wave : "+ CurrentWave + " / " + WaveNum;
     }
 }

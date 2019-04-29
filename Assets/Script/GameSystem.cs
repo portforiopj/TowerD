@@ -21,7 +21,7 @@ public class GameSystem : MonoBehaviour
             return instance;
         }
     }
-
+    public Text G_time_text;
     public GameState G_state;
     public GameObject G_tower_info;
     public Text G_fail_text; // 실패 텍스트
@@ -128,9 +128,11 @@ public class GameSystem : MonoBehaviour
     }
     void ReadyGame()
     {
+        G_time_text.text = G_state.ToString()+" : " + G_time.ToString("F0"); 
         G_time -= Time.deltaTime;
         if(G_time <= 0)
         {
+            
             G_playing = false;
             G_time =G_oritime;
             G_state = GameState.Play;
@@ -144,7 +146,7 @@ public class GameSystem : MonoBehaviour
     }
     void PlayGame()
     {
-        
+        G_time_text.text = G_state.ToString() + " : " + G_time2.ToString("F0");
         G_time2 -= Time.deltaTime;
         if (!G_playing)
         {

@@ -6,11 +6,8 @@ using UnityEngine.UI;
 public class UI_PlayerInfo : MonoBehaviour
 {
     //test 용도
-    int blue = 1;
-    int red = 1;
-    int green =1;
-    int PlayHp = 30;
-    int PlayMhp;
+    
+    int UI_PlayMhp;
 
 
 
@@ -24,27 +21,27 @@ public class UI_PlayerInfo : MonoBehaviour
     void Start()
     {
         //뒤에 할당 값 전부 test 용
-        UIPlay_RedText.text = red.ToString();        
-        UIPlay_GreenText.text = green.ToString();
-        UIPlay_BlueText.text = blue.ToString();
-        PlayMhp = PlayHp;
+        
+        UI_PlayMhp = Player.P_hp;
     }
 
     
     void Update()
     {
-        //test
+        UIPlay_RedText.text = GameSystem.Instatce.G_gold[0].ToString();
+        UIPlay_BlueText.text = GameSystem.Instatce.G_gold[1].ToString();
+        UIPlay_GreenText.text = GameSystem.Instatce.G_gold[2].ToString();
+
         SetHealthBar();
     }
 
     public void SetHealthBar()
     {
-        //test 용
-        PlayHp = 10;
 
 
-        UIPaly_HealthBar.fillAmount = (float)PlayHp / PlayMhp;
-        UIPaly_HealthBarText.text = PlayHp + " / " + PlayMhp;
+
+        UIPaly_HealthBar.fillAmount = (float)Player.P_hp / UI_PlayMhp;
+        UIPaly_HealthBarText.text = Player.P_hp + " / " + UI_PlayMhp;
     }
 
 }

@@ -33,7 +33,7 @@ public class UI_Resource : MonoBehaviour
             if (UI_time > 3f)
             {
                 UI_time = 0;
-                GameSystem.Instatce.G_gold[UI_goldgen] += 5;
+                GameSystem.Instatce.G_usegold[UI_goldgen] += 5;
             }
         }
         if (GameSystem.Instatce.G_state != GameSystem.GameState.Play)

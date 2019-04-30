@@ -7,9 +7,11 @@ public class Player : MonoBehaviour
 {
     Animator P_anim;
     public string P_name;
-    
+
     public static int P_hp = 50;
     public bool[] P_buff = new bool[2];
+    public static bool[] P_skill = new bool[2];
+    public int[] P_skill_use_coast = new int[3];
     public enum PlayerState
     {
         Idle ,
@@ -18,6 +20,10 @@ public class Player : MonoBehaviour
     }
     public PlayerState P_state;
     
+    public void SkillPlayer()
+    {
+        P_state = PlayerState.Idle;
+    }
     public void DiePlayer()
     {
         if (P_hp <= 0)
@@ -27,6 +33,7 @@ public class Player : MonoBehaviour
             
         }
     }
+   
     void PlayeRoundState(PlayerState state) // 게임 상태 
     {
 

@@ -60,10 +60,14 @@ public class UI_Wave : MonoBehaviour
         
         for (int i = 0; i < WaveCount.Count; i++)
         {
-            transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().sprite =
-GameSystem.Instatce.G_monsterctrl.M_monster_ob[GameSystem.Instatce.G_round * 6 + GameSystem.Instatce.G_wave + i].GetComponent<Monster>().M_sprite;
-            transform.GetChild(0).GetChild(i).GetChild(1).GetComponent<Text>().text = "X" +
-GameSystem.Instatce.G_roundunit[GameSystem.Instatce.G_wave + i].ToString();
+            if (GameSystem.Instatce.G_round * 6 + GameSystem.Instatce.G_wave + i -3 <= GameSystem.Instatce.G_monsterctrl.M_monster_ob.Length)
+            {
+                transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().sprite =
+   GameSystem.Instatce.G_monsterctrl.M_monster_ob[GameSystem.Instatce.G_round * 6 + GameSystem.Instatce.G_wave + i].GetComponent<Monster>().M_sprite;
+                transform.GetChild(0).GetChild(i).GetChild(1).GetComponent<Text>().text = "X" +
+    GameSystem.Instatce.G_roundunit[GameSystem.Instatce.G_wave + i].ToString();
+            }
+            else break;
         }
     }
 

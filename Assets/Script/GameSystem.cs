@@ -35,21 +35,24 @@ public class GameSystem : MonoBehaviour
     public float G_roundgen; // 유닛 나오는 시간
     public int G_count = 0;
     public int[] G_gold = new int[3];
+    public int[] G_usegold = new int[3];
+    public float[] G_goldtime = new float[3];
+    public int[] G_goldcount = new int[3];
     float G_time;
     float G_time2;
     public float G_oritime;
     public float G_oritime2;
-    public void TowerOpenState(bool tower)
-    {
-        G_tower_infopanel.SetActive(tower);
-        G_tower_infosprite.sprite = G_tower_info.GetComponent<Tower>().T_sprite;
-        G_tower_infotext[0].text = G_tower_info.GetComponent<Tower>().T_name;
-        G_tower_infotext[1].text = G_tower_info.GetComponent<Tower>().T_hp.ToString();
-        G_tower_infotext[2].text = G_tower_info.GetComponent<Tower>().T_dmg.ToString();
-        G_tower_infotext[3].text = G_tower_info.GetComponent<Tower>().T_Dmr.ToString();
-        G_tower_infotext[4].text = G_tower_info.GetComponent<Tower>().T_Ats.ToString();
-        G_tower_infotext[5].text = G_tower_info.GetComponent<Tower>().T_buygold.ToString();
-    }
+    //public void TowerOpenState(bool tower) 타워 누를시 정보 나오기
+    //{
+    //    G_tower_infopanel.SetActive(tower);
+    //    G_tower_infosprite.sprite = G_tower_info.GetComponent<Tower>().T_sprite;
+    //    G_tower_infotext[0].text = G_tower_info.GetComponent<Tower>().T_name;
+    //    G_tower_infotext[1].text = G_tower_info.GetComponent<Tower>().T_hp.ToString();
+    //    G_tower_infotext[2].text = G_tower_info.GetComponent<Tower>().T_dmg.ToString();
+    //    G_tower_infotext[3].text = G_tower_info.GetComponent<Tower>().T_Dmr.ToString();
+    //    G_tower_infotext[4].text = G_tower_info.GetComponent<Tower>().T_Ats.ToString();
+    //    G_tower_infotext[5].text = G_tower_info.GetComponent<Tower>().T_buygold.ToString();
+    //}
    
     void Awake()
     {
@@ -79,10 +82,7 @@ public class GameSystem : MonoBehaviour
     //    if(Starting)
     //    G_state = GameState.Play;
     //}
-   public void NumSentNode(int i)
-    {
-        Node.N_num = i;
-    }
+
     public IEnumerator ResultText(Text text,string String)
     {
         text.enabled =true;
@@ -121,9 +121,82 @@ public class GameSystem : MonoBehaviour
     void Update()
     {
         GamePlayState(G_state);
+
         if (Player.P_hp <= 0)
         {
             G_state = GameState.Gameover;
+        }
+        G_goldtime[0] += Time.deltaTime;
+        G_goldtime[1] += Time.deltaTime;
+        G_goldtime[2] += Time.deltaTime;
+
+        UpdateGold();
+
+    }
+    void UpdateGold()
+    {
+        if (0.15f <= G_goldtime[0])
+        {
+            if(G_usegold[0] < G_goldcount[0])
+            {
+                G_gold[0] -= 1;
+                G_goldcount[0]--;
+                G_goldtime[0] = 0;
+            }
+            if (G_usegold[0] > G_goldcount[0])
+            {
+                G_gold[0] += 1;
+                G_goldcount[0]++;
+                G_goldtime[0] = 0;
+            }
+            if (G_usegold[0] == G_goldcount[0])
+            {
+                G_usegold[0] = 0;
+                G_goldcount[0] = 0;
+                G_goldtime[0] = 0;
+            }
+        }
+        if (0.15f <= G_goldtime[1])
+        {
+            if (G_usegold[1] <G_goldcount[1])
+            {
+                G_gold[1] -= 1;
+                G_goldcount[1]--;
+                G_goldtime[1] = 0;
+            }
+            if (G_usegold[1] > G_goldcount[1])
+            {
+                G_gold[1] += 1;
+                G_goldcount[1]++;
+                G_goldtime[1] = 0;
+            }
+            if (G_usegold[1] == G_goldcount[1])
+            {
+                G_usegold[1] = 0;
+                G_goldcount[1] = 0;
+                G_goldtime[1] = 0;
+            }
+        }
+        if (0.15f <= G_goldtime[2])
+        {
+            if (G_usegold[2] < G_goldcount[2])
+            {
+                G_gold[2] -= 1;
+                G_goldcount[2]--;
+                G_goldtime[2] = 0;
+            }
+            if (G_usegold[2] > G_goldcount[2])
+            {
+                G_gold[2] += 1;
+                G_goldcount[2]++;
+                G_goldtime[2] = 0;
+            }
+            if (G_usegold[2] == G_goldcount[2])
+            {
+                G_usegold[2] = 0;
+                G_goldcount[2] = 0;
+                G_goldtime[2] = 0;
+            }
         }
     }
     void ReadyGame()

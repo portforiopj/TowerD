@@ -48,6 +48,18 @@ public class Monster : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    void OnMouseDown()
+    {
+        if (Player.P_skill[0] == true)
+        {
+            M_hp -= 50;
+            Player.P_skill[0] = false;
+        }
+        if (Player.P_skill[1] == true)
+        {
+            Player.P_skill[1] = false;
+        }
+    }
     void Move() // 길찾기 함수
     {
 

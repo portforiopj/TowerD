@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Tower : MonoBehaviour
 {
     public int T_num;
@@ -13,6 +13,8 @@ public class Tower : MonoBehaviour
     public float T_Ats;// 공격속도
     public bool[] T_buffs;
     public int[] T_buygold;
+    public Image T_uiimage;
+
     public enum Towertype
     {
         Archer,
@@ -40,13 +42,13 @@ public class Tower : MonoBehaviour
         T_anim = GetComponent<Animator>();
         T_tr = GetComponent<Transform>();
         T_tr.position = new Vector3(T_tr.position.x, T_tr.position.y + 0.5f, T_tr.position.z);
-        
-
-        for(int i=0;i< Info.Instatnce.I_tower_ob.Length; i++)
-        {
-          
-        }
        
+        
+       
+    }
+    void Start()
+    {
+        T_maxhp = T_hp;
     }
     void TowerPlayState(TowerState state) // 게임 상태 
     {
@@ -68,13 +70,29 @@ public class Tower : MonoBehaviour
     }
     void OnMouseDown()
     {
-        GameSystem.Instatce.G_tower_info = gameObject;
-        GameSystem.Instatce.TowerOpenState(true);
+        GameObject a = GameObject.Find("Canvas");
+        
+        if (a.transform.GetChild(5).GetChild(0).gameObject.activeSelf)
+        {
+            a.transform.GetChild(5).GetChild(0).gameObject.SetActive(false);
+            a.transform.GetChild(5).GetChild(2).gameObject.SetActive(true);
+            
+        }
+        if (a.transform.GetChild(5).GetChild(1).gameObject.activeSelf)
+        {
+            a.transform.GetChild(5).GetChild(1).gameObject.SetActive(false);
+            a.transform.GetChild(5).GetChild(2).gameObject.SetActive(true);
+        }
+        a.transform.GetChild(5).GetComponent<UI_Control>().UI_tower_info = gameObject.GetComponent<Tower>();
     }
     public void IDleTower()
     {
 
-        
+        if (T_monsters2.Length > 0)
+        {
+
+            T_state = TowerState.Attack;
+        }
         if (T_hp <= 0)
         {
             T_state = TowerState.Die;
@@ -82,10 +100,20 @@ public class Tower : MonoBehaviour
     }
     public void DieTower()
     {
-        gameObject.transform.parent.GetComponent<MeshRenderer>()
-             .material = Info.Instatnce.I_node_mat[2];
-        
-        Destroy(gameObject);
+        if (gameObject.transform.parent.name == "Special")
+        {
+            gameObject.transform.parent.GetComponent<MeshRenderer>()
+            .material = Info.Instatnce.I_node_mat[3];
+            Destroy(gameObject);
+        }
+        else
+        {
+            gameObject.transform.parent.GetComponent<MeshRenderer>()
+           .material = Info.Instatnce.I_node_mat[2];
+
+
+            Destroy(gameObject);
+        }
     }
    IEnumerator AttackTower()
     {
@@ -149,15 +177,12 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
-        
+        Debug.Log((float)T_hp / T_maxhp);
+        T_uiimage.fillAmount = (float)T_hp / T_maxhp;
         TowerPlayState(T_state);
         T_monsters2 = GameObject.FindGameObjectsWithTag("Monster");
-        if (T_monsters2.Length > 0)
-        {
-
-            T_state = TowerState.Attack;
-        }
-        else T_state = TowerState.Idle;
+     
+       
         
 
     }

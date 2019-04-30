@@ -24,16 +24,33 @@ public class Node : MonoBehaviour
             gameObject.GetComponent<MeshRenderer>().material.color == Info.Instatnce.I_node_mat[3].color)
         {
 
-            if (N_num != 0 && N_num != 6)
+            if (N_num != 0 && N_num != 6)// 타워 건설시 돈이 부족하면 취소하고 돈이 있으면 돈이나가고 타워가 건설됨
             {
+                bool Notenough = false;
+                for (int i = 0; i < Info.Instatnce.I_tower_ob[N_num].GetComponent<Tower>().T_buygold.Length; i++)
+                {
+                    if (Info.Instatnce.I_tower_ob[N_num].GetComponent
+                        <Tower>().T_buygold[i] > GameSystem.Instatce.G_gold[i])
+                    {
+                        Notenough = true;
+                    }                         
+                }
+                if (!Notenough)
+                {
+                    N_instower = Instantiate(Info.Instatnce.I_tower_ob[N_num], new Vector3(gameObject.transform.
+                       position.x, gameObject.transform.position.y + 0.5f, gameObject.transform.position.z),
+                       Info.Instatnce.I_tower_ob[N_num].transform.rotation);
+                    Transform tr = transform;
+                    N_instower.transform.parent = tr;
+                   
+                    for (int j = 0; j < Info.Instatnce.I_tower_ob[N_num].GetComponent<Tower>().T_buygold.Length; j++)
+                    {
+                        GameSystem.Instatce.G_usegold[j] -= Info.Instatnce.I_tower_ob[N_num].GetComponent
+                        <Tower>().T_buygold[j];
+                    }
+                    N_num = 0;
+                }
                 
-                N_instower = Instantiate(Info.Instatnce.I_tower_ob[N_num], new Vector3(gameObject.transform.
-                    position.x, gameObject.transform.position.y + 0.5f, gameObject.transform.position.z),
-                    Info.Instatnce.I_tower_ob[N_num].transform.rotation);
-                Transform tr = transform;
-                N_instower.transform.parent = tr;
-                N_num = 0;
-
 
             }
             if (N_instower != null)
@@ -47,10 +64,19 @@ public class Node : MonoBehaviour
         {
             if (N_num == 6)
             {
-                N_instower = Instantiate(Info.Instatnce.I_tower_ob[N_num],new Vector3( gameObject.transform.
-                    position.x,gameObject.transform.position.y+0.5f,gameObject.transform.position.z)
-                    , Info.Instatnce.I_tower_ob[N_num]. transform.rotation);
-                N_num = 0;
+               
+                
+                    N_instower = Instantiate(Info.Instatnce.I_tower_ob[N_num], new Vector3(gameObject.transform.
+                 position.x, gameObject.transform.position.y + 0.5f, gameObject.transform.position.z)
+                 , Info.Instatnce.I_tower_ob[N_num].transform.rotation);
+                    
+                    for (int j = 0; j < Info.Instatnce.I_tower_ob[N_num].GetComponent<Tower>().T_buygold.Length; j++)
+                    {
+                        GameSystem.Instatce.G_usegold[j] -= Info.Instatnce.I_tower_ob[N_num].GetComponent
+                        <Tower>().T_buygold[j];
+                    }
+                    N_num = 0;
+                
             }
             if (N_instower != null)
             {

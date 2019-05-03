@@ -20,7 +20,7 @@ public class UI_StageNum : MonoBehaviour
     void Start()
     {
         StageNum = GameSystem.Instatce.G_round + 1;
-        CurrentWave = GameSystem.Instatce.G_wave + 1;
+        CurrentWave = GameSystem.Instatce.G_wave+ 1;
         SetStgnum();
         SetWavenum();
     }

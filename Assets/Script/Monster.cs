@@ -63,12 +63,12 @@ public class Monster : MonoBehaviour
     void Move() // 길찾기 함수
     {
 
-        transform.position = Vector3.MoveTowards(tr.position, M_tilePass.Get_T_tile_tr(M_count).position + new Vector3(0f, 0.5f, 0f)
+        transform.position = Vector3.MoveTowards(tr.position, M_tilePass.Get_T_tilelist_tr(M_count).position + new Vector3(0f, 0.5f, 0f)
         , Time.deltaTime * M_movs);
-        if (Vector3.Distance(transform.position, M_tilePass.Get_T_tile_tr(M_count).position + new Vector3(0f, 0.5f, 0f)) < 0.2)
+        if (Vector3.Distance(transform.position, M_tilePass.Get_T_tilelist_tr(M_count).position + new Vector3(0f, 0.5f, 0f)) < 0.2)
         {
             M_count++;
-            if (M_count == M_tilePass.T_tile_tr.Length)
+            if (M_count == M_tilePass.T_tile_list_list[GameSystem.Instatce.G_round].GetCountOfIndex())
             {
                 Player.P_hp -= M_dmg * 2;
                 DieMonster2();

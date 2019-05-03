@@ -12,6 +12,10 @@ public class Testlist
     {
         return T_tilepasstr_list[index];
     }
+    public int GetCountOfIndex()
+    {
+        return T_tilepasstr_list.Count;
+    }
 }
 public class TilePass : MonoBehaviour
 {

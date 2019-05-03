@@ -49,7 +49,6 @@ public class UI_Wave : MonoBehaviour
             WaveCount.Add(i);
             if(i >= 2)
             {
-                Debug.Log(WaveCount.Count);
                 break;
             }
         }

@@ -21,13 +21,11 @@ public class GameSystem : MonoBehaviour
             return instance;
         }
     }
+    public GameObject G_mapfile;
     public Text G_time_text;
     public GameState G_state;
     public GameObject G_tower_info;
     public Text G_fail_text; // 실패 텍스트
-    public Image G_tower_infosprite;
-    public Text[] G_tower_infotext;
-    public GameObject G_tower_infopanel;
     public bool G_playing = false;
     public int G_round; // 라운드 수
     public int G_wave; // 웨이브 수
@@ -42,20 +40,10 @@ public class GameSystem : MonoBehaviour
     float G_time2;
     public float G_oritime;
     public float G_oritime2;
-    //public void TowerOpenState(bool tower) 타워 누를시 정보 나오기
-    //{
-    //    G_tower_infopanel.SetActive(tower);
-    //    G_tower_infosprite.sprite = G_tower_info.GetComponent<Tower>().T_sprite;
-    //    G_tower_infotext[0].text = G_tower_info.GetComponent<Tower>().T_name;
-    //    G_tower_infotext[1].text = G_tower_info.GetComponent<Tower>().T_hp.ToString();
-    //    G_tower_infotext[2].text = G_tower_info.GetComponent<Tower>().T_dmg.ToString();
-    //    G_tower_infotext[3].text = G_tower_info.GetComponent<Tower>().T_Dmr.ToString();
-    //    G_tower_infotext[4].text = G_tower_info.GetComponent<Tower>().T_Ats.ToString();
-    //    G_tower_infotext[5].text = G_tower_info.GetComponent<Tower>().T_buygold.ToString();
-    //}
    
     void Awake()
     {
+        G_state = GameState.Ready;
         if (instance == null)
         {
             instance = this;
@@ -67,22 +55,15 @@ public class GameSystem : MonoBehaviour
         }
         G_time = G_oritime;
         G_time2 = G_oritime2;
+        G_round = PlayerPrefs.GetInt("Round");
+        for(int i=0; i < G_mapfile.transform.childCount; i++)
+        {
+            G_mapfile.transform.GetChild(i).gameObject.SetActive(false);
+        }
+        
+        G_mapfile.transform.GetChild(G_round).gameObject.SetActive(true);
+        G_wave = 0;
     }
-    //public void GameStart(GameObject gameObject)
-    //{
-    //    bool Starting = false; // 시작 상태 bool 값
-    //    if(G_state != GameState.Ready)
-    //    {
-    //        Starting = false;
-    //    }
-    //    if (G_state == GameState.Ready)
-    //    {
-    //        Starting = true;
-    //    }
-    //    if(Starting)
-    //    G_state = GameState.Play;
-    //}
-
     public IEnumerator ResultText(Text text,string String)
     {
         text.enabled =true;
@@ -223,18 +204,14 @@ public class GameSystem : MonoBehaviour
         G_time2 -= Time.deltaTime;
         if (!G_playing)
         {
-            Debug.Log("");
+
             InvokeRepeating("StartRound", 0.0f,G_roundgen);
             
         }
-        if(G_count == G_roundunit[(G_round*6)+G_wave])
+        if(G_count == G_roundunit[G_round*6+G_wave])
         {
             G_wave++;
-            if(G_wave == 6)
-            {
-                G_round++;
-                G_wave = 0;
-            }
+           
             G_count = 0;
             CancelInvoke("StartRound");
         }
@@ -242,6 +219,13 @@ public class GameSystem : MonoBehaviour
         {
             G_time2 = G_oritime2;
             G_state = GameState.Ready;
+            if (G_wave == 6)
+            {
+                G_round++;
+                G_wave = 0;
+                PlayerPrefs.SetInt("Round", G_round);
+                SceneManager.LoadScene(0);
+            }
         }
         if ((G_round * 6) + G_wave >= G_monsterctrl.M_monster_ob.Length)
         {
@@ -251,7 +235,9 @@ public class GameSystem : MonoBehaviour
     }
     void Clear()
     {
+        PlayerPrefs.SetInt("Round", 0);
         SceneManager.LoadScene(2);
+
     }
     public void RestartGame()
     {
@@ -265,7 +251,7 @@ public class GameSystem : MonoBehaviour
     }
     void GameOver()
     {
-       
+        PlayerPrefs.SetInt("Round", 0);
         // 게임 종료
     }
 }

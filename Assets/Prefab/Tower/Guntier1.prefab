@@ -9504,6 +9504,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed8151cbb6b6ec47b4ecca7ff43acfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  T_breaktower: {fileID: 198059975614214484, guid: 7a0476686964e41ac8320b7cf37868c2,
+    type: 3}
   T_num: 3
   T_hp: 50
   T_maxhp: 0
@@ -9597,8 +9599,8 @@ GameObject:
   - component: {fileID: 33162234213751724}
   - component: {fileID: 23411862511571598}
   m_Layer: 10
-  m_Name: Turret_MachineGun_L01
-  m_TagString: Untagged
+  m_Name: Head
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9610,7 +9612,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1589316105556366}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.7930937, z: 0.0064944928}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

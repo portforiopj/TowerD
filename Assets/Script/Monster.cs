@@ -30,7 +30,7 @@ public class Monster : MonoBehaviour
         tr = GetComponent<Transform>();
         tr.position = new Vector3(tr.position.x, tr.position.y + 0.5f, tr.position.z);
     }
-
+   
     void Update()
     {
         Move();
@@ -41,6 +41,7 @@ public class Monster : MonoBehaviour
     }
     void DieMonster()
     {
+       
         GameSystem.Instatce.G_gold[(int)M_monsterType] += M_gold; // 타입에 맞춰서 골드 획득
         Destroy(gameObject);
     }

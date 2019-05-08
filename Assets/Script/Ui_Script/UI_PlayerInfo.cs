@@ -21,7 +21,7 @@ public class UI_PlayerInfo : MonoBehaviour
     void Start()
     {
         //뒤에 할당 값 전부 test 용
-        
+        Player.P_hp = 50;
         UI_PlayMhp = Player.P_hp;
     }
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 23922229023592226}
   m_Layer: 10
   m_Name: Turret_RocketTower_L01
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,6 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed8151cbb6b6ec47b4ecca7ff43acfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  T_breaktower: {fileID: 198059975614214484, guid: 7a0476686964e41ac8320b7cf37868c2,
+    type: 3}
   T_num: 6
   T_hp: 95
   T_maxhp: 0

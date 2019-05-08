@@ -7,7 +7,7 @@ public class UI_Control : MonoBehaviour
     Player UI_player_info;
     public GameObject UI_control_pannal;
     public Tower UI_tower_info;
-
+    public UI_MainManger C_uimain;
     int UI_UpgradeCount = 0;
     int UI_UpgradeCount2 = 0;
     public GameObject[] UI_Start;
@@ -71,7 +71,7 @@ public class UI_Control : MonoBehaviour
             UI_UpgradeCount = 1;
             UI_UpgradeCount2 = 3;
         }
-        if (UI_tower_info.transform.parent.GetChild(1).gameObject.activeSelf)
+        else if (UI_tower_info.transform.parent.GetChild(1).gameObject.activeSelf)
         {
             UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[0];
             UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[1];
@@ -82,16 +82,22 @@ public class UI_Control : MonoBehaviour
             UI_UpgradeCount = 2;
             UI_UpgradeCount2 = 4;
         }
-        if (UI_tower_info.transform.parent.GetChild(3).gameObject.activeSelf)
+        else if (UI_tower_info.transform.parent.GetChild(3).gameObject.activeSelf)
         {
             UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[0];
             UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[1];
             UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[2];
             UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[0];
             UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[1];
-            UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent .GetChild(4).GetComponent<Tower>().T_buygold[2];
+            UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[2];
             UI_UpgradeCount = 2;
             UI_UpgradeCount2 = 4;
+        }
+        else if(UI_tower_info.transform.parent.GetChild(4).gameObject.activeSelf || UI_tower_info.transform.parent.GetChild(2).gameObject.activeSelf)
+        {
+            UI_control_pannal.transform.GetChild(0).gameObject.SetActive(true);
+            UI_control_pannal.transform.GetChild(2).gameObject.SetActive(false);
+            StartCoroutine(GameSystem.Instatce.ResultText(C_uimain.UI_fail_text, "타워가 최종 업그레이드 상태입니다."));
         }
     }
     public void UpGradeTower(int i)
@@ -120,6 +126,7 @@ public class UI_Control : MonoBehaviour
                         if (GameSystem.Instatce.G_gold[k] < UI_tower_info.transform.parent.GetChild(UI_UpgradeCount).GetComponent<Tower>().T_buygold[k])
                         {
                             Notenough = true;
+                            StartCoroutine(GameSystem.Instatce.ResultText(C_uimain.UI_fail_text, "골드가 부족합니다."));
                             break;
                         }
                     }
@@ -167,184 +174,12 @@ public class UI_Control : MonoBehaviour
 
 
 
-        #region
-            //if (UI_tower_info.T_num == 1)
-            //{
-
-            //    if (i == 0)
-            //    {
-            //        for (int j = 0; j < GameSystem.Instatce.G_gold.Length; j++)
-            //        {
-            //            if (GameSystem.Instatce.G_gold[j] < Info.Instatnce.I_tower_ob[4].GetComponent<Tower>().T_buygold[j])
-            //            {
-            //                Notenough = true;
-            //                StartCoroutine(GameSystem.Instatce.ResultText(GameSystem.Instatce.G_fail_text, "골드가 부족합니다"));
-            //                break;
-            //            }
-            //        }
-            //        if (!Notenough)
-            //        {
-            //            GameObject a = Instantiate(Info.Instatnce.I_tower_ob[4], new Vector3(UI_tower_info.transform.parent.position.x,
-            //            UI_tower_info.transform.parent.position.y + 0.5f, UI_tower_info.transform.parent.position.z), Quaternion.identity);
-            //            a.transform.parent = UI_tower_info.transform.parent;
-            //            for (int j = 0; j < GameSystem.Instatce.G_gold.Length; j++)
-            //            {
-            //                GameSystem.Instatce.G_gold[j] -= Info.Instatnce.I_tower_ob[4].GetComponent<Tower>().T_buygold[j];
-
-            //            }
-            //            Destroy(UI_tower_info.gameObject);
-            //            UI_control_pannal.transform.GetChild(2).gameObject.SetActive(false);
-            //            UI_control_pannal.transform.GetChild(0).gameObject.SetActive(true);
-            //        }
-            //    }
-            //    if (i == 1)
-            //    {
-            //        for (int j = 0; j < GameSystem.Instatce.G_gold.Length; j++)
-            //        {
-            //            if (GameSystem.Instatce.G_gold[j] < Info.Instatnce.I_tower_ob[5].GetComponent<Tower>().T_buygold[j])
-            //            {
-            //                Notenough = true;
-            //                StartCoroutine(GameSystem.Instatce.ResultText(GameSystem.Instatce.G_fail_text, "골드가 부족합니다"));
-            //                break;
-            //            }
-            //        }
-            //        if (!Notenough)
-            //        {
-            //            GameObject a = Instantiate(Info.Instatnce.I_tower_ob[5], new Vector3(UI_tower_info.transform.parent.position.x,
-            //            UI_tower_info.transform.parent.position.y + 0.5f, UI_tower_info.transform.parent.position.z), Quaternion.identity);
-            //            a.transform.parent = UI_tower_info.transform.parent;
-            //            for (int j = 0; j < GameSystem.Instatce.G_gold.Length; j++)
-            //            {
-            //                GameSystem.Instatce.G_gold[j] -= Info.Instatnce.I_tower_ob[4].GetComponent<Tower>().T_buygold[j];
-
-            //            }
-            //            Destroy(UI_tower_info.gameObject);
-            //            UI_control_pannal.transform.GetChild(2).gameObject.SetActive(false);
-            //            UI_control_pannal.transform.GetChild(0).gameObject.SetActive(true);
-            //        }
-            //    }
-
-
-            //}
-            //if (UI_tower_info.T_num == 2)
-            //{
-            //    if (i == 0)
-            //    {
-            //        for (int j = 0; j < GameSystem.Instatce.G_gold.Length; j++)
-            //        {
-            //            if (GameSystem.Instatce.G_gold[j] < Info.Instatnce.I_tower_ob[4].GetComponent<Tower>().T_buygold[j])
-            //            {
-            //                Notenough = true;
-            //                StartCoroutine(GameSystem.Instatce.ResultText(GameSystem.Instatce.G_fail_text, "골드가 부족합니다"));
-            //                break;
-            //            }
-            //        }
-            //        if (!Notenough)
-            //        {
-            //            GameObject a = Instantiate(Info.Instatnce.I_tower_ob[4], new Vector3(UI_tower_info.transform.parent.position.x,
-            //            UI_tower_info.transform.parent.position.y + 0.5f, UI_tower_info.transform.parent.position.z), Quaternion.identity);
-            //            a.transform.parent = UI_tower_info.transform.parent;
-            //            for (int j = 0; j < GameSystem.Instatce.G_gold.Length; j++)
-            //            {
-            //                GameSystem.Instatce.G_gold[j] -= Info.Instatnce.I_tower_ob[4].GetComponent<Tower>().T_buygold[j];
-
-            //            }
-            //            Destroy(UI_tower_info.gameObject);
-            //            UI_control_pannal.transform.GetChild(2).gameObject.SetActive(false);
-            //            UI_control_pannal.transform.GetChild(0).gameObject.SetActive(true);
-            //        }
-            //    }
-            //    if (i == 1)
-            //    {
-            //        for (int j = 0; j < GameSystem.Instatce.G_gold.Length; j++)
-            //        {
-            //            if (GameSystem.Instatce.G_gold[j] < Info.Instatnce.I_tower_ob[6].GetComponent<Tower>().T_buygold[j])
-            //            {
-            //                Notenough = true;
-            //                StartCoroutine(GameSystem.Instatce.ResultText(GameSystem.Instatce.G_fail_text, "골드가 부족합니다"));
-            //                break;
-            //            }
-            //        }
-            //        if (!Notenough)
-            //        {
-            //            GameObject a = Instantiate(Info.Instatnce.I_tower_ob[6], new Vector3(UI_tower_info.transform.parent.position.x,
-            //            UI_tower_info.transform.parent.position.y + 0.5f, UI_tower_info.transform.parent.position.z), Quaternion.identity);
-            //            a.transform.parent = UI_tower_info.transform.parent;
-            //            for (int j = 0; j < GameSystem.Instatce.G_gold.Length; j++)
-            //            {
-            //                GameSystem.Instatce.G_gold[j] -= Info.Instatnce.I_tower_ob[6].GetComponent<Tower>().T_buygold[j];
-
-            //            }
-            //            Destroy(UI_tower_info.gameObject);
-            //            UI_control_pannal.transform.GetChild(2).gameObject.SetActive(false);
-            //            UI_control_pannal.transform.GetChild(0).gameObject.SetActive(true);
-            //        }
-            //    }
-            //}
-
-            //if (UI_tower_info.T_num == 3)
-            //{
-            //    if (i == 0)
-            //    {
-            //        for (int j = 0; j < GameSystem.Instatce.G_gold.Length; j++)
-            //        {
-            //            if (GameSystem.Instatce.G_gold[j] < Info.Instatnce.I_tower_ob[5].GetComponent<Tower>().T_buygold[j])
-            //            {
-            //                Notenough = true;
-            //                StartCoroutine(GameSystem.Instatce.ResultText(GameSystem.Instatce.G_fail_text, "골드가 부족합니다"));
-            //                break;
-            //            }
-            //        }
-            //        if (!Notenough)
-            //        {
-            //            GameObject a = Instantiate(Info.Instatnce.I_tower_ob[5], new Vector3(UI_tower_info.transform.parent.position.x,
-            //            UI_tower_info.transform.parent.position.y + 0.5f, UI_tower_info.transform.parent.position.z), Quaternion.identity);
-            //            a.transform.parent = UI_tower_info.transform.parent;
-            //            for (int j = 0; j < GameSystem.Instatce.G_gold.Length; j++)
-            //            {
-            //                GameSystem.Instatce.G_gold[j] -= Info.Instatnce.I_tower_ob[5].GetComponent<Tower>().T_buygold[j];
-
-            //            }
-            //            Destroy(UI_tower_info.gameObject);
-            //            UI_control_pannal.transform.GetChild(2).gameObject.SetActive(false);
-            //            UI_control_pannal.transform.GetChild(0).gameObject.SetActive(true);
-            //        }
-            //        if (i == 1)
-            //        {
-
-            //            for (int j = 0; j < GameSystem.Instatce.G_gold.Length; j++)
-            //            {
-            //                if (GameSystem.Instatce.G_gold[j] < Info.Instatnce.I_tower_ob[6].GetComponent<Tower>().T_buygold[j])
-            //                {
-            //                    Notenough = true;
-            //                    StartCoroutine(GameSystem.Instatce.ResultText(GameSystem.Instatce.G_fail_text, "골드가 부족합니다"));
-            //                    break;
-            //                }
-            //            }
-            //            if (!Notenough)
-            //            {
-            //                GameObject a = Instantiate(Info.Instatnce.I_tower_ob[6], new Vector3(UI_tower_info.transform.parent.position.x,
-            //                UI_tower_info.transform.parent.position.y + 0.5f, UI_tower_info.transform.parent.position.z), Quaternion.identity);
-            //                a.transform.parent = UI_tower_info.transform.parent;
-            //                for (int j = 0; j < GameSystem.Instatce.G_gold.Length; j++)
-            //                {
-            //                    GameSystem.Instatce.G_gold[j] -= Info.Instatnce.I_tower_ob[6].GetComponent<Tower>().T_buygold[j];
-
-            //                }
-            //                Destroy(UI_tower_info.gameObject);
-            //                UI_control_pannal.transform.GetChild(2).gameObject.SetActive(false);
-            //                UI_control_pannal.transform.GetChild(0).gameObject.SetActive(true);
-            //            }
-            //        }
-            //    }
-
-            //}
-            #endregion
+        
     }
 
     public void BuildTower(int i)
     {
-        Debug.Log(i);
+
         GameObject[] T_Towers = GameObject.FindGameObjectsWithTag("Tower");
         if (T_Towers.Length != 0)
         {
@@ -361,7 +196,7 @@ public class UI_Control : MonoBehaviour
              <Tower>().T_buygold[j] > GameSystem.Instatce.G_gold[j])
            {
                Notenough = true;
-                StartCoroutine(GameSystem.Instatce.ResultText(GameSystem.Instatce.G_fail_text, "골드가 부족합니다"));
+                StartCoroutine(GameSystem.Instatce.ResultText(C_uimain.UI_fail_text, "골드가 부족합니다"));
                 break;
             }
 
@@ -388,7 +223,7 @@ public class UI_Control : MonoBehaviour
             if(GameSystem.Instatce.G_gold[i] < UI_player_info.P_skill_use_coast[i])
             {
                 Notenough = true;
-                StartCoroutine(GameSystem.Instatce.ResultText(GameSystem.Instatce.G_fail_text, "골드가 부족합니다"));
+                StartCoroutine(GameSystem.Instatce.ResultText(C_uimain.UI_fail_text, "골드가 부족합니다"));
                 break;
             }
         }

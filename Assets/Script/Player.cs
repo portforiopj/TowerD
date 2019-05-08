@@ -63,7 +63,6 @@ public class Player : MonoBehaviour
             if(P_map.transform.GetChild(i).GetComponent<MeshRenderer>().material.color == Info.Instatnce.I_node_mat[1].color)
             {
                 P_target_tr = P_map.transform.GetChild(i);
-                Debug.Log(P_map.transform.GetChild(i));
                 break;
             }
         }

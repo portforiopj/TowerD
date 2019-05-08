@@ -5,12 +5,12 @@ using UnityEngine;
 public class Node : MonoBehaviour
 {
     public Info N_info;
-
+    public UI_MainManger N_uimain;
     public GameObject N_instower;
     public static int N_num = -1;
     void Awake()
     {
-
+        N_uimain = GameObject.Find("P_Main").GetComponent<UI_MainManger>();
     }
     void Update()
     {
@@ -27,7 +27,16 @@ public class Node : MonoBehaviour
                 T_Towers[j].GetComponent<Tower>().T_rangecheck = false;
             }
         }
-        
+
+        if (gameObject.GetComponent<MeshRenderer>().material.color == Info.Instatnce.I_node_mat[5].color ||
+            gameObject.GetComponent<MeshRenderer>().material.color == Info.Instatnce.I_node_mat[0].color)
+        {
+            if (N_num != -1)
+            {
+                StartCoroutine(GameSystem.Instatce.ResultText(N_uimain.UI_fail_text, "건설 불가능한 지역 입니다."));
+
+            }
+        }
         if (gameObject.GetComponent<MeshRenderer>().material.color == Info.Instatnce.I_node_mat[2].color ||
             gameObject.GetComponent<MeshRenderer>().material.color == Info.Instatnce.I_node_mat[3].color)
         {
@@ -46,7 +55,7 @@ public class Node : MonoBehaviour
                 if (!Notenough)
                 {
                     N_instower = Instantiate(Info.Instatnce.I_tower_ob[N_num], new Vector3(gameObject.transform.
-                       position.x, gameObject.transform.position.y + 0.5f, gameObject.transform.position.z),
+                       position.x, gameObject.transform.position.y , gameObject.transform.position.z),
                        Info.Instatnce.I_tower_ob[N_num].transform.rotation);
                     Transform tr = transform;
                     N_instower.transform.parent = tr;
@@ -56,7 +65,7 @@ public class Node : MonoBehaviour
                         GameSystem.Instatce.G_gold[j] -= Info.Instatnce.I_tower_ob[N_num].transform.GetChild(0).GetComponent
                         <Tower>().T_buygold[j];
                     }
-                    N_num = 0;
+                    N_num = -1;
                 }
                 
 
@@ -75,7 +84,7 @@ public class Node : MonoBehaviour
                
                 
                     N_instower = Instantiate(Info.Instatnce.I_tower_ob[N_num], new Vector3(gameObject.transform.
-                 position.x, gameObject.transform.position.y + 0.5f, gameObject.transform.position.z)
+                 position.x, gameObject.transform.position.y , gameObject.transform.position.z)
                  , Info.Instatnce.I_tower_ob[N_num].transform.rotation);
                     
                     for (int j = 0; j < Info.Instatnce.I_tower_ob[N_num].transform.GetChild(0).GetComponent<Tower>().T_buygold.Length; j++)
@@ -83,7 +92,7 @@ public class Node : MonoBehaviour
                         GameSystem.Instatce.G_gold[j] -= Info.Instatnce.I_tower_ob[N_num].transform.GetChild(0).GetComponent
                         <Tower>().T_buygold[j];
                     }
-                    N_num = 0;
+                    N_num = -1;
                 
             }
             if (N_instower != null)
@@ -93,12 +102,9 @@ public class Node : MonoBehaviour
             else
                 return;
         }
-        else if (N_num != -1)
-        {
-            if(gameObject.GetComponent<MeshRenderer>().material.color == Info.Instatnce.I_node_mat[5].color||
-                gameObject.GetComponent<MeshRenderer>().material.color == Info.Instatnce.I_node_mat[0].color)
-            StartCoroutine(GameSystem.Instatce.ResultText(GameSystem.Instatce.G_fail_text, "건설 불가능한 지역 입니다."));
-        }
+      
+       
+           
 
     }
 

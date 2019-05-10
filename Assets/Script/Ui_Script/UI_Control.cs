@@ -11,12 +11,13 @@ public class UI_Control : MonoBehaviour
     int UI_UpgradeCount = 0;
     int UI_UpgradeCount2 = 0;
     public GameObject[] UI_Start;
+    int UI_Choiceint;
     // Start is called before the first frame update
     void Start()
     {
-        
 
-        UI_player_info = GameObject.Find("Player").GetComponent<Player>();
+        UI_Choiceint = PlayerPrefs.GetInt("Character");
+       UI_player_info = GameObject.Find("Player").transform.GetChild(UI_Choiceint).GetComponent<Player>();
         UI_Start[2].GetComponent<Text>().text = "Round " + (GameSystem.Instatce.G_round+1).ToString();
         UIState();
 
@@ -42,15 +43,15 @@ public class UI_Control : MonoBehaviour
         }
         if (UI_control_pannal.transform.GetChild(1).gameObject.activeSelf)
         {
-            UI_control_pannal.transform.GetChild(1).GetChild(0).GetComponent<UI_ControlButton>().Red = Info.Instatnce.I_tower_ob[0].transform.GetChild(0).GetComponent<Tower>().T_buygold[0];
-            UI_control_pannal.transform.GetChild(1).GetChild(0).GetComponent<UI_ControlButton>().Blue = Info.Instatnce.I_tower_ob[0].transform.GetChild(0).GetComponent<Tower>().T_buygold[1];
-            UI_control_pannal.transform.GetChild(1).GetChild(0).GetComponent<UI_ControlButton>().Green = Info.Instatnce.I_tower_ob[0].transform.GetChild(0).GetComponent<Tower>().T_buygold[2];
-            UI_control_pannal.transform.GetChild(1).GetChild(1).GetComponent<UI_ControlButton>().Red = Info.Instatnce.I_tower_ob[1].transform.GetChild(0).GetComponent<Tower>().T_buygold[0];
-            UI_control_pannal.transform.GetChild(1).GetChild(1).GetComponent<UI_ControlButton>().Blue = Info.Instatnce.I_tower_ob[1].transform.GetChild(0).GetComponent<Tower>().T_buygold[1];
-            UI_control_pannal.transform.GetChild(1).GetChild(1).GetComponent<UI_ControlButton>().Green = Info.Instatnce.I_tower_ob[1].transform.GetChild(0).GetComponent<Tower>().T_buygold[2];
-            UI_control_pannal.transform.GetChild(1).GetChild(2).GetComponent<UI_ControlButton>().Red = Info.Instatnce.I_tower_ob[2].transform.GetChild(0).GetComponent<Tower>().T_buygold[0];
-            UI_control_pannal.transform.GetChild(1).GetChild(2).GetComponent<UI_ControlButton>().Blue = Info.Instatnce.I_tower_ob[2].transform.GetChild(0).GetComponent<Tower>().T_buygold[1];
-            UI_control_pannal.transform.GetChild(1).GetChild(2).GetComponent<UI_ControlButton>().Green = Info.Instatnce.I_tower_ob[2].transform.GetChild(0).GetComponent<Tower>().T_buygold[2];
+            UI_control_pannal.transform.GetChild(1).GetChild(0).GetComponent<UI_ControlButton>().Red = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(0).transform.GetChild(0).GetComponent<Tower>().T_buygold[0];
+            UI_control_pannal.transform.GetChild(1).GetChild(0).GetComponent<UI_ControlButton>().Blue = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(0).transform.GetChild(0).GetComponent<Tower>().T_buygold[1];
+            UI_control_pannal.transform.GetChild(1).GetChild(0).GetComponent<UI_ControlButton>().Green = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(0).transform.GetChild(0).GetComponent<Tower>().T_buygold[2];
+            UI_control_pannal.transform.GetChild(1).GetChild(1).GetComponent<UI_ControlButton>().Red = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(1).transform.GetChild(0).GetComponent<Tower>().T_buygold[0];
+            UI_control_pannal.transform.GetChild(1).GetChild(1).GetComponent<UI_ControlButton>().Blue = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(1).transform.GetChild(0).GetComponent<Tower>().T_buygold[1];
+            UI_control_pannal.transform.GetChild(1).GetChild(1).GetComponent<UI_ControlButton>().Green = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(1).transform.GetChild(0).GetComponent<Tower>().T_buygold[2];
+            UI_control_pannal.transform.GetChild(1).GetChild(2).GetComponent<UI_ControlButton>().Red = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(2).transform.GetChild(0).GetComponent<Tower>().T_buygold[0];
+            UI_control_pannal.transform.GetChild(1).GetChild(2).GetComponent<UI_ControlButton>().Blue = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(2).transform.GetChild(0).GetComponent<Tower>().T_buygold[1];
+            UI_control_pannal.transform.GetChild(1).GetChild(2).GetComponent<UI_ControlButton>().Green = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(2).transform.GetChild(0   ).GetComponent<Tower>().T_buygold[2];
         }
         if (UI_control_pannal.transform.GetChild(2).gameObject.activeSelf)
         {
@@ -59,46 +60,54 @@ public class UI_Control : MonoBehaviour
     }
     void UpGradeTowerState()
     {
-        if (UI_tower_info.transform.parent.GetChild(0).gameObject.activeSelf)
+        if (UI_tower_info != null)
         {
+            if (UI_tower_info.transform.parent.GetChild(0).gameObject.activeSelf)
+            {
 
-            UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(1).GetComponent<Tower>().T_buygold[0];
-            UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(1).GetComponent<Tower>().T_buygold[1];
-            UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(1).GetComponent<Tower>().T_buygold[2];
-            UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(3).GetComponent<Tower>().T_buygold[0];
-            UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(3).GetComponent<Tower>().T_buygold[1];
-            UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(3).GetComponent<Tower>().T_buygold[2];
-            UI_UpgradeCount = 1;
-            UI_UpgradeCount2 = 3;
+                UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(1).GetComponent<Tower>().T_buygold[0];
+                UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(1).GetComponent<Tower>().T_buygold[1];
+                UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(1).GetComponent<Tower>().T_buygold[2];
+                UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(3).GetComponent<Tower>().T_buygold[0];
+                UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(3).GetComponent<Tower>().T_buygold[1];
+                UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(3).GetComponent<Tower>().T_buygold[2];
+                UI_UpgradeCount = 1;
+                UI_UpgradeCount2 = 3;
+            }
+            else if (UI_tower_info.transform.parent.GetChild(1).gameObject.activeSelf)
+            {
+                UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[0];
+                UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[1];
+                UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[2];
+                UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[0];
+                UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[1];
+                UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[2];
+                UI_UpgradeCount = 2;
+                UI_UpgradeCount2 = 4;
+            }
+            else if (UI_tower_info.transform.parent.GetChild(3).gameObject.activeSelf)
+            {
+                UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[0];
+                UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[1];
+                UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[2];
+                UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[0];
+                UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[1];
+                UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[2];
+                UI_UpgradeCount = 2;
+                UI_UpgradeCount2 = 4;
+            }
+            else if (UI_tower_info.transform.parent.GetChild(4).gameObject.activeSelf || UI_tower_info.transform.parent.GetChild(2).gameObject.activeSelf)
+            {
+                UI_control_pannal.transform.GetChild(0).gameObject.SetActive(true);
+                UI_control_pannal.transform.GetChild(2).gameObject.SetActive(false);
+                StartCoroutine(GameSystem.Instatce.ResultText(C_uimain.UI_fail_text, "타워가 최종 업그레이드 상태입니다."));
+            }
         }
-        else if (UI_tower_info.transform.parent.GetChild(1).gameObject.activeSelf)
+        else
         {
-            UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[0];
-            UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[1];
-            UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[2];
-            UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[0];
-            UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[1];
-            UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[2];
-            UI_UpgradeCount = 2;
-            UI_UpgradeCount2 = 4;
+            CancelButton(2);
         }
-        else if (UI_tower_info.transform.parent.GetChild(3).gameObject.activeSelf)
-        {
-            UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[0];
-            UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[1];
-            UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[2];
-            UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[0];
-            UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[1];
-            UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[2];
-            UI_UpgradeCount = 2;
-            UI_UpgradeCount2 = 4;
-        }
-        else if(UI_tower_info.transform.parent.GetChild(4).gameObject.activeSelf || UI_tower_info.transform.parent.GetChild(2).gameObject.activeSelf)
-        {
-            UI_control_pannal.transform.GetChild(0).gameObject.SetActive(true);
-            UI_control_pannal.transform.GetChild(2).gameObject.SetActive(false);
-            StartCoroutine(GameSystem.Instatce.ResultText(C_uimain.UI_fail_text, "타워가 최종 업그레이드 상태입니다."));
-        }
+       
     }
     public void UpGradeTower(int i)
     {
@@ -142,6 +151,7 @@ public class UI_Control : MonoBehaviour
                     break;
                 }
             }
+            UI_tower_info = null;
         }
         if (i == 1)
         {
@@ -170,16 +180,17 @@ public class UI_Control : MonoBehaviour
 
                 }
             }
+            UI_tower_info = null;
         }
 
+        CancelButton(1);
 
 
-        
     }
 
     public void BuildTower(int i)
     {
-
+        UI_tower_info = null;
         GameObject[] T_Towers = GameObject.FindGameObjectsWithTag("Tower");
         if (T_Towers.Length != 0)
         {
@@ -190,9 +201,9 @@ public class UI_Control : MonoBehaviour
         }
         Node.N_num = -1;
         bool Notenough = false;
-        for (int j = 0; j < Info.Instatnce.I_tower_ob[i].transform.GetChild(0).GetComponent<Tower>().T_buygold.Length; j++)
+        for (int j = 0; j < Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(i).transform.GetChild(0).GetComponent<Tower>().T_buygold.Length; j++)
         {
-            if (Info.Instatnce.I_tower_ob[i].transform.GetChild(0).GetComponent
+            if (Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(i).transform.GetChild(0).GetComponent
              <Tower>().T_buygold[j] > GameSystem.Instatce.G_gold[j])
            {
                Notenough = true;
@@ -220,7 +231,7 @@ public class UI_Control : MonoBehaviour
         bool Notenough = false;
         for(int j = 0; j < GameSystem.Instatce.G_gold.Length; j++)
         {
-            if(GameSystem.Instatce.G_gold[i] < UI_player_info.P_skill_use_coast[i])
+            if(GameSystem.Instatce.G_gold[j] < UI_player_info.P_skill_use_coast[j])
             {
                 Notenough = true;
                 StartCoroutine(GameSystem.Instatce.ResultText(C_uimain.UI_fail_text, "골드가 부족합니다"));
@@ -229,13 +240,11 @@ public class UI_Control : MonoBehaviour
         }
         if (!Notenough)
         {
-            for (int j = 0; j < GameSystem.Instatce.G_gold.Length; j++)
-            {
-                GameSystem.Instatce.G_gold[i] -= UI_player_info.P_skill_use_coast[i];
-            }
-
             Player.P_skill[i] = true;
             UI_player_info.P_state = Player.PlayerState.Skill;
+           
+
+           
         }
       
     }
@@ -246,11 +255,10 @@ public class UI_Control : MonoBehaviour
     }
     public void CancelButton(int i)
     {
-
-
         UI_control_pannal.transform.GetChild(0).gameObject.SetActive(true);
-
         UI_control_pannal.transform.GetChild(i).gameObject.SetActive(false);
+        Node.N_num = -1;
+        UI_tower_info = null;
     }
     // Update is called once per frame
     void Update()

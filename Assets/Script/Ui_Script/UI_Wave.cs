@@ -64,7 +64,7 @@ public class UI_Wave : MonoBehaviour
                 transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().sprite =
    GameSystem.Instatce.G_monsterctrl.M_monster_ob[GameSystem.Instatce.G_round * 6 + GameSystem.Instatce.G_wave + i].GetComponent<Monster>().M_sprite;
                 transform.GetChild(0).GetChild(i).GetChild(1).GetComponent<Text>().text = "X" +
-    GameSystem.Instatce.G_roundunit[GameSystem.Instatce.G_wave + i].ToString();
+    GameSystem.Instatce.G_roundunit[GameSystem.Instatce.G_round * 6 + GameSystem.Instatce.G_wave+i].ToString();
             }
             else break;
         }

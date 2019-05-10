@@ -2,22 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class UI_MainManger : MonoBehaviour
 {
     public Text UI_fail_text; // 실패 텍스트
     public GameObject UI_mapfile;
     public Text UI_time_text;
     public MonsterCtrl UI_monsterctrl;
+    public GameObject[] UI_mapstage;
+    public GameObject UI_quitpanel;
     // Start is called before the first frame update
     void Awake()
     {
         
+    }
+    public void ReStartGame()
+    {
+        UI_quitpanel.SetActive(false);
+    }
+    public void QuitGame()
+    {
+        SceneManager.LoadScene(1);
     }
     void Start()
     {
         GameSystem.Instatce.G_gold[0] = 0;
         GameSystem.Instatce.G_gold[1] = 0;
         GameSystem.Instatce.G_gold[2] = 0;
+        for(int i=0; i < UI_mapstage.Length; i++)
+        {
+            UI_mapstage[i].SetActive(false);
+        }
+        UI_mapstage[GameSystem.Instatce.G_Stage].SetActive(true);
+        UI_mapfile = UI_mapstage[GameSystem.Instatce.G_Stage];
         for (int i = 0; i < UI_mapfile.transform.childCount; i++)
         {
             UI_mapfile.transform.GetChild(i).gameObject.SetActive(false);
@@ -59,5 +76,15 @@ public class UI_MainManger : MonoBehaviour
             UI_time_text.text = GameSystem.Instatce.G_state.ToString() + " : " + GameSystem.Instatce.G_time2.ToString("F0");
         }
         GameSystem.Instatce.UpdateGold();
+
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+
+                UI_quitpanel.SetActive(true);             
+            }
+        }
+        
     }
 }

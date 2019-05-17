@@ -28,7 +28,7 @@ public class Node : MonoBehaviour
     void Awake()
     {
         N_uimain = GameObject.Find("P_Main").GetComponent<UI_MainManger>();
-        for(int i=0; i < Info.Instatnce.I_node_mat.Length; i++)
+        for (int i = 0; i < Info.Instatnce.I_node_mat.Length; i++)
         {
             if (gameObject.GetComponent<MeshRenderer>().material.color == Info.Instatnce.I_node_mat[i].color)
             {
@@ -37,7 +37,7 @@ public class Node : MonoBehaviour
                 break;
             }
         }
-        gameObject.GetComponent<MeshRenderer>().enabled = false ;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
     void Update()
     {
@@ -50,7 +50,7 @@ public class Node : MonoBehaviour
             if (gameObject.GetComponent<MeshRenderer>().enabled == true)
             {
                 gameObject.GetComponent<MeshRenderer>().enabled = false;
-            }          
+            }
         }
         else
         {
@@ -89,7 +89,7 @@ public class Node : MonoBehaviour
             gameObject.GetComponent<MeshRenderer>().material.color == Info.Instatnce.I_node_mat[3].color)
         {
 
-            if (N_num != -1 && N_num != 6)// 타워 건설시 돈이 부족하면 취소하고 돈이 있으면 돈이나가고 타워가 건설됨
+            if (N_num != -1)// 타워 건설시 돈이 부족하면 취소하고 돈이 있으면 돈이나가고 타워가 건설됨
             {
                 bool Notenough = false;
                 //for (int i = 0; i < Info.Instatnce.I_tower_ob[N_num].transform.GetChild(0).GetComponent<Tower>().T_buygold.Length; i++)
@@ -111,11 +111,11 @@ public class Node : MonoBehaviour
                 if (!Notenough)
                 {
                     N_instower = Instantiate(Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(N_num), new Vector3(gameObject.transform.
-                       position.x, gameObject.transform.position.y , gameObject.transform.position.z),
-                       Info.Instatnce.I_tower_ob[N_num].transform.rotation);
+                       position.x, gameObject.transform.position.y, gameObject.transform.position.z),
+                       Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(N_num).transform.rotation);
                     Transform tr = transform;
                     N_instower.transform.parent = tr;
-                   
+
                     for (int j = 0; j < Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(N_num).transform.GetChild(0).GetComponent<Tower>().T_buygold.Length; j++)
                     {
                         GameSystem.Instatce.G_gold[j] -= Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(N_num).transform.GetChild(0).GetComponent
@@ -123,7 +123,7 @@ public class Node : MonoBehaviour
                     }
                     N_num = -1;
                 }
-                
+
 
             }
             if (N_instower != null)
@@ -135,36 +135,49 @@ public class Node : MonoBehaviour
         }
         if (gameObject.GetComponent<MeshRenderer>().material.color == Info.Instatnce.I_node_mat[3].color)
         {
-            if (N_num == 6)
+            if (N_num != -1)
             {
-               
-                
+                bool Notenough = false;
+                for (int i = 0; i < Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(N_num).transform.GetChild(0).GetComponent<Tower>().T_buygold.Length; i++)
+                {
+                    if (Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(N_num).transform.GetChild(0).GetComponent
+                        <Tower>().T_buygold[i] > GameSystem.Instatce.G_gold[i])
+                    {
+                        Notenough = true;
+                    }
+                }
+                if (!Notenough)
+                {
                     N_instower = Instantiate(Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(N_num), new Vector3(gameObject.transform.
-                 position.x, gameObject.transform.position.y , gameObject.transform.position.z)
-                 , Info.Instatnce.I_tower_ob[N_num].transform.rotation);
-                    
+                       position.x, gameObject.transform.position.y, gameObject.transform.position.z),
+                       Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(N_num).transform.rotation);
+                    Transform tr = transform;
+                    N_instower.transform.parent = tr;
+
                     for (int j = 0; j < Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(N_num).transform.GetChild(0).GetComponent<Tower>().T_buygold.Length; j++)
                     {
                         GameSystem.Instatce.G_gold[j] -= Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(N_num).transform.GetChild(0).GetComponent
                         <Tower>().T_buygold[j];
                     }
+                    Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(N_num).transform.GetChild(0).GetComponent<Tower>().T_Ats =
+                        Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(N_num).transform.GetChild(0).GetComponent<Tower>().T_Ats / 2;
                     N_num = -1;
-                
+
+                }
+                if (N_instower != null)
+                {
+                    gameObject.GetComponent<MeshRenderer>().material = Info.Instatnce.I_node_mat[5];
+                }
+                else
+                    return;
             }
-            if (N_instower != null)
-            {
-                gameObject.GetComponent<MeshRenderer>().material = Info.Instatnce.I_node_mat[5];
-            }
-            else
-                return;
+
         }
-      
-       
-           
 
     }
-
-
-
 }
+
+
+
+
 

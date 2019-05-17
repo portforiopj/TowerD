@@ -13,7 +13,8 @@ public class GameSystem : MonoBehaviour
         Ready,
         Play,
         Gameover,
-        Clear
+        Clear,
+        Pause
     }
     static GameSystem instance;
     public static GameSystem Instatce
@@ -56,11 +57,9 @@ public class GameSystem : MonoBehaviour
             DontDestroyOnLoad(gameObject);
            
         }
-        G_Stage = PlayerPrefs.GetInt("Stage");
+       
         G_time = G_oritime;
-        G_time2 = G_oritime2;
-        G_round = PlayerPrefs.GetInt("Round");
-        G_choiceint = PlayerPrefs.GetInt("Character");
+        G_time2 = 0;
         G_wave = 0;
 
     }
@@ -188,6 +187,7 @@ public class GameSystem : MonoBehaviour
             G_playing = false;
             G_time =G_oritime;
             G_state = GameState.Play;
+            G_roundset = false;
         }
         // 게임 시작 전
         
@@ -198,18 +198,19 @@ public class GameSystem : MonoBehaviour
         GameObject[] G_monsters = GameObject.FindGameObjectsWithTag("Monster");
         if (!G_roundset)
         {
-            G_time2 -= Time.deltaTime;
+            G_time2 += Time.deltaTime;
         }
-        
-       
-       
-        if(G_time2<=0)
+        if (GameSystem.Instatce.G_count == GameSystem.Instatce.G_roundunit[GameSystem.Instatce.G_round * 6 + GameSystem.Instatce.G_wave])
         {
-            G_roundset = true;
+
             if (G_monsters.Length <= 0)
             {
+                G_roundset = true;
                 G_state = GameState.Ready;
-                G_time2 = G_oritime2;
+                G_time2 = 0;
+                GameSystem.Instatce.G_wave++;
+
+                GameSystem.Instatce.G_count = 0;
                 if (G_wave == 6)
                 {
                     G_round++;
@@ -217,11 +218,12 @@ public class GameSystem : MonoBehaviour
                     PlayerPrefs.SetInt("Round", G_round);
                     SceneManager.LoadScene(2);
                 }
+
             }
-           
-           
-            
+
         }
+            
+        
         
       
     }
@@ -231,19 +233,11 @@ public class GameSystem : MonoBehaviour
         SceneManager.LoadScene(1);
 
     }
-    public void RestartGame()
-    {
-        Time.timeScale = 1.0f;
-        
-    }
-    public void PauseGame()
-    {
-        Time.timeScale =0f;
-        //시작 버튼 정지
-    }
+
     void GameOver()
     {
         PlayerPrefs.SetInt("Round", 0);
+        
         // 게임 종료
     }
 }

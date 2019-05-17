@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1000010086510274}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children:
   - {fileID: 4000010766704584}
   m_Father: {fileID: 4000013723963362}
@@ -399,7 +399,7 @@ Transform:
   m_GameObject: {fileID: 1000012962366582}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 4000013723963362}
   m_RootOrder: 0
@@ -599,6 +599,7 @@ GameObject:
   - component: {fileID: 4000013723963362}
   - component: {fileID: 95000010999109132}
   - component: {fileID: 268633713325704657}
+  - component: {fileID: 3621378755145016232}
   m_Layer: 0
   m_Name: Rabbit_Green
   m_TagString: Monster
@@ -615,7 +616,7 @@ Transform:
   m_GameObject: {fileID: 1000013796193586}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 30, z: 30}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000012285115532}
   - {fileID: 4000011458335816}
@@ -653,6 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050967d59af6caa4fbe8d97fb297e5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  M_Particle: {fileID: 19800000, guid: 77ec3c4e07a36814fb3169ecef41b50a, type: 3}
   M_num: 0
   M_name: 
   M_hp: 35
@@ -660,9 +662,23 @@ MonoBehaviour:
   M_movs: 1.5
   M_buff: 0000
   M_gold: 3
+  M_ammor: 0
   M_monsterType: 2
   M_sprite: {fileID: 21300000, guid: b42aad7805d6cb24ba0148bfe6a5e16e, type: 3}
   M_tilePass: {fileID: 0}
+--- !u!135 &3621378755145016232
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013796193586}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!1 &1000013915321720
 GameObject:
   m_ObjectHideFlags: 0

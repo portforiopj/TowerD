@@ -7,6 +7,10 @@ public class StartUI : MonoBehaviour
 
     public void StartMenu()
     {
-        SceneManager.LoadScene(1);
+        PlayerPrefs.SetInt("Scene", 0);
+        PlayerPrefs.SetInt("LoadScene", 1);
+        SceneManager.LoadScene(3);
+       
+     
     }
 }

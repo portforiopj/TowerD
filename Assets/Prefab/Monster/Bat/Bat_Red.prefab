@@ -505,6 +505,7 @@ GameObject:
   - component: {fileID: 4000010273486942}
   - component: {fileID: 95000011442643512}
   - component: {fileID: -620865719198838789}
+  - component: {fileID: -8673016880889567759}
   m_Layer: 0
   m_Name: Bat_Red
   m_TagString: Monster
@@ -521,7 +522,7 @@ Transform:
   m_GameObject: {fileID: 1000011593744314}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 30, z: 30}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000012703179492}
   - {fileID: 4000014270920404}
@@ -559,16 +560,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050967d59af6caa4fbe8d97fb297e5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  M_Particle: {fileID: 19800000, guid: 77ec3c4e07a36814fb3169ecef41b50a, type: 3}
   M_num: 0
   M_name: 
   M_hp: 25
-  M_dmg: 0
+  M_dmg: 20
   M_movs: 1.5
   M_buff: 0000
   M_gold: 1
+  M_ammor: 0
   M_monsterType: 0
   M_sprite: {fileID: 21300000, guid: bcca915b9d4ba20438975fafc6f5f8b4, type: 3}
   M_tilePass: {fileID: 0}
+--- !u!135 &-8673016880889567759
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011593744314}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!1 &1000011643250032
 GameObject:
   m_ObjectHideFlags: 0

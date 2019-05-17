@@ -1189,6 +1189,7 @@ MonoBehaviour:
   P_name: Elemental
   P_buff: 0000
   P_skill_use_coast: 020000000100000001000000
+  P_upgrade: 0000000000000000000000000000000000000000
   P_state: 0
 --- !u!1 &1365549363767112558
 GameObject:
@@ -1960,6 +1961,7 @@ MonoBehaviour:
   P_name: Humen
   P_buff: 0000
   P_skill_use_coast: 010000000100000002000000
+  P_upgrade: 0000000000000000000000000000000000000000
   P_state: 0
 --- !u!1 &1874072245060599788
 GameObject:
@@ -4980,9 +4982,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0079e61423cf7f45ab1898b955b6ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  P_name: Meka
+  P_name: Mecha
   P_buff: 0000
   P_skill_use_coast: 010000000200000001000000
+  P_upgrade: 0000000000000000000000000000000000000000
   P_state: 0
 --- !u!1 &5887068166159402600
 GameObject:

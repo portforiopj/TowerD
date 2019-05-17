@@ -86,7 +86,7 @@ Transform:
   m_GameObject: {fileID: 1000010924935894}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children:
   - {fileID: 4000013685814092}
   m_Father: {fileID: 4000012323953278}
@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 4000012323953278}
   - component: {fileID: 95000010230734170}
   - component: {fileID: -3927037593977989725}
+  - component: {fileID: 763482118241652598}
   m_Layer: 0
   m_Name: Ghost_White
   m_TagString: Monster
@@ -149,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 1000011659465104}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 30, z: 30}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000010835851742}
   - {fileID: 4000010394429140}
@@ -187,16 +188,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050967d59af6caa4fbe8d97fb297e5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  M_Particle: {fileID: 19800000, guid: 77ec3c4e07a36814fb3169ecef41b50a, type: 3}
   M_num: 0
   M_name: 
   M_hp: 100
-  M_dmg: 0
+  M_dmg: 10
   M_movs: 1.5
   M_buff: 0000
   M_gold: 3
+  M_ammor: 0
   M_monsterType: 1
   M_sprite: {fileID: 21300000, guid: 28e13500be542b74c8cf440e24b54473, type: 3}
   M_tilePass: {fileID: 0}
+--- !u!135 &763482118241652598
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011659465104}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!1 &1000011867156646
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +238,7 @@ Transform:
   m_GameObject: {fileID: 1000011867156646}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children:
   - {fileID: 4000010969156066}
   m_Father: {fileID: 4000012323953278}

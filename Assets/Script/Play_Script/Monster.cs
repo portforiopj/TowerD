@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
+    public ParticleSystem M_Particle;
     public int M_num;
     public string M_name;
     public int M_hp;
@@ -56,6 +57,8 @@ public class Monster : MonoBehaviour
     {
         if (Player.P_skill[0] == true)
         {
+            Instantiate(M_Particle.gameObject, transform.position, Quaternion.identity);
+            M_Particle.Play();
             M_hp -= 50;
             for (int j = 0; j < GameSystem.Instatce.G_gold.Length; j++)
             {

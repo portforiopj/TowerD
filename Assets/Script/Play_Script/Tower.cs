@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Tower : MonoBehaviour
 {
-
+    public ParticleSystem T_touchParticle;
     GameObject T_head;
     ParticleSystem[] T_particle;
     public ParticleSystem T_breaktower;
@@ -132,6 +132,8 @@ public class Tower : MonoBehaviour
     {
         if (Player.P_skill[1] == true)
         {
+            Instantiate(T_touchParticle.gameObject,transform.position,Quaternion.identity);
+            T_touchParticle.Play();
             T_hp += 10;
             for (int j = 0; j < GameSystem.Instatce.G_gold.Length; j++)
             {

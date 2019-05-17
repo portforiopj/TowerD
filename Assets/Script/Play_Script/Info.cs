@@ -15,13 +15,22 @@ public class TowerBase
     {
         return T_texture_prb.Count;
     }
+    public GameObject SetList(int index,GameObject game)
+    {
+        T_texture_prb[index] = game;
+        return T_texture_prb[index];
+    }
+    public Sprite GetChildSprite(int i)
+    {
+        return T_texture_prb[i].transform.GetChild(0).GetComponent<Tower>().T_sprite;
+    }
+    
 }
 
 //타워 정보 싱글톤
 public class Info : MonoBehaviour
 {
     static Info instance;
-   
 
     public static Info Instatnce
     {
@@ -30,8 +39,12 @@ public class Info : MonoBehaviour
             return instance;
         }
     }
+    public UI_MyTowerDataBase MyTowerBase;
+    public GameObject[] I_tower_Mecha;
+    public GameObject[] I_tower_Elemental;
+    public GameObject[] I_tower_Humen;
+    public GameObject[] I_tower_public;
     public TowerBase[] I_tower_base;
-    public GameObject[] I_tower_ob=new GameObject[7];
     public Material[] I_node_mat = new Material[6];
     // 0.몬스터 이동경로 1.플레이어 위치 2. 타워 건설 O 
     //3. 특수 타워 건설 O 4.몬스터 시작위치 5.타워 건설 X
@@ -46,16 +59,17 @@ public class Info : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+        TowerSave();
     }
-    void Start()
+    public void TowerSave()
     {
+        for(int i = 0; i < MyTowerBase.MyTowerList.Count; i++)
+        {
+            for(int j = 0; j < MyTowerBase.MyTowerList[i].GetCountOfIndex(); j++)
+            {
+                I_tower_base[i].SetList(j, MyTowerBase.MyTowerList[i].GetList(j));
+            }
+        }
+        }
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

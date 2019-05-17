@@ -9679,23 +9679,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed8151cbb6b6ec47b4ecca7ff43acfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  T_touchParticle: {fileID: 19800006, guid: 60bc526f4be1e044ab9e46340b82ffb3, type: 3}
   T_breaktower: {fileID: 198059975614214484, guid: 7a0476686964e41ac8320b7cf37868c2,
     type: 3}
   T_num: 4
-  T_hp: 65
+  T_hp: 35
   T_maxhp: 0
   T_name: 
   T_dmg: 7
   T_Dmr: 5
   T_Ats: 0.6
   T_buffs: 
-  T_buygold: 000000000800000000000000
+  T_buygold: 010000000400000003000000
   T_rangecheck: 0
   T_uiimage: {fileID: 4821262901673785065}
   T_rangesprite: {fileID: 6741393417577819365}
   T_Towers: []
+  T_monster: {fileID: 0}
   T_towertype: 1
-  T_sprite: {fileID: 0}
+  T_sprite: {fileID: 21300000, guid: 0880ef9255202b047bd711c061806b8f, type: 3}
   T_type: 0
   T_state: 0
   T_monsters2: []

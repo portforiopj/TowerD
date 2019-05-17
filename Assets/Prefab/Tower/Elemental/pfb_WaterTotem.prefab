@@ -456,6 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed8151cbb6b6ec47b4ecca7ff43acfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  T_touchParticle: {fileID: 19800006, guid: 60bc526f4be1e044ab9e46340b82ffb3, type: 3}
   T_breaktower: {fileID: 198059975614214484, guid: 7a0476686964e41ac8320b7cf37868c2,
     type: 3}
   T_num: 0
@@ -471,6 +472,7 @@ MonoBehaviour:
   T_uiimage: {fileID: 4527958652890001310}
   T_rangesprite: {fileID: 4874557589552068045}
   T_Towers: []
+  T_monster: {fileID: 0}
   T_towertype: 0
   T_sprite: {fileID: 0}
   T_type: 0

@@ -335,7 +335,7 @@ Transform:
   m_GameObject: {fileID: 1000013023805920}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children:
   - {fileID: 4000013507457646}
   m_Father: {fileID: 4000010693723324}
@@ -545,7 +545,7 @@ Transform:
   m_GameObject: {fileID: 1000013937343690}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children:
   - {fileID: 4000012674507308}
   m_Father: {fileID: 4000010693723324}
@@ -562,6 +562,7 @@ GameObject:
   - component: {fileID: 4000010693723324}
   - component: {fileID: 95000013841406666}
   - component: {fileID: -4253568601363181595}
+  - component: {fileID: 3996205637295876633}
   m_Layer: 0
   m_Name: Slime_Yellow
   m_TagString: Monster
@@ -578,7 +579,7 @@ Transform:
   m_GameObject: {fileID: 1000014251014320}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 30, z: 30}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000010798747894}
   - {fileID: 4000013853196370}
@@ -616,13 +617,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050967d59af6caa4fbe8d97fb297e5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  M_Particle: {fileID: 19800000, guid: 77ec3c4e07a36814fb3169ecef41b50a, type: 3}
   M_num: 0
   M_name: 
   M_hp: 220
-  M_dmg: 0
+  M_dmg: 8
   M_movs: 1.5
   M_buff: 0000
   M_gold: 3
+  M_ammor: 0
   M_monsterType: 0
   M_sprite: {fileID: 21300000, guid: e9aa3439152b49c42b1eede7b3b083c1, type: 3}
   M_tilePass: {fileID: 0}
+--- !u!135 &3996205637295876633
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000014251014320}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 0.25, z: 0}

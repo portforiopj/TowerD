@@ -11,7 +11,12 @@ public class UI_ShowmeTower : MonoBehaviour
         {
             for (int j = 0; j < transform.GetChild(i).childCount; j++)
             {
-                transform.GetChild(i).GetChild(j).GetChild(0).GetComponent<Image>().sprite = Info.Instatnce.I_tower_base[i].GetChildSprite(j);
+                if (Info.Instatnce.I_tower_base[i].GetList(j) != null)
+                {
+                    transform.GetChild(i).GetChild(j).GetChild(0).GetComponent<Image>().sprite = Info.Instatnce.I_tower_base[i].GetChildSprite(j);
+                }
+                else transform.GetChild(i).GetChild(j).GetChild(0).GetComponent<Image>().enabled = false;
+
             }
         }
 

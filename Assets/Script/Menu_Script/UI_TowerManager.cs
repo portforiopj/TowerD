@@ -21,6 +21,10 @@ public class UI_TowerManager : MonoBehaviour
     // Start is called before the first frame update
     public void ShowImage()
     {
+        for(int i= 0; i < UI_image_Player.Length; i++)
+        {
+            UI_image_Player[i].enabled = false;
+        }
         UI_Player_sprite.sprite = UI_player[TowerCount2].P_sprite;
         if (TowerCount2 == 0)
         {
@@ -49,16 +53,12 @@ public class UI_TowerManager : MonoBehaviour
         }   
         for (int i = 0; i < Info.Instatnce.I_tower_base[TowerCount2].GetCountOfIndex(); i++)
         {
-            if(Info.Instatnce.I_tower_base[TowerCount2].GetList(i)!= null)
-            {
-                UI_image_Player[i].enabled = true;
-                UI_image_Player[i].sprite = Info.Instatnce.I_tower_base[TowerCount2].GetChildSprite(i);
-                if(UI_image_Player[i].sprite == null)
-                {
-                    UI_image_Player[i].enabled = false;
-                }
-            }
            
+            if (Info.Instatnce.I_tower_base[TowerCount2].GetList(i) != null)
+            {
+                UI_image_Player[i].enabled=true;
+                UI_image_Player[i].sprite = Info.Instatnce.I_tower_base[TowerCount2].GetChildSprite(i);
+            }         
         }
     }
    

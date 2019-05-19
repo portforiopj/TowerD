@@ -67,7 +67,7 @@ public class UI_MainManager2 : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
         }
-        UI_P_attend = PlayerPrefs.GetInt("UI_P_attend");
+       
         UI_Gold = PlayerPrefs.GetInt("UIGold");
         UI_PlayGold = PlayerPrefs.GetInt("UIPlayGold");
         UI_Cash = PlayerPrefs.GetInt("UICash");
@@ -147,6 +147,7 @@ public class UI_MainManager2 : MonoBehaviour
     }
     public  void AttendPresent()
     {
+        UI_P_attend = PlayerPrefs.GetInt("UI_P_attend");
         UI_P_attend2 = PlayerPrefs.GetInt("Attend");
         if (UI_P_attend2 == 0)
         {

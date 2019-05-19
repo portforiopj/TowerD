@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public string P_name;
     GameObject P_map;
     public static int P_hp = 50;
+    
     public bool[] P_buff = new bool[2];
     public static bool[] P_skill = new bool[2];
     public int[] P_skill_use_coast = new int[3];
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     bool P_StartScene = false;
     int P_StartScene_int;
     public Sprite P_sprite;
+    public Sprite[] P_skill_icon;
     Transform P_tr;
     Transform P_target_tr;
     public enum PlayerState

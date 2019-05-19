@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed8151cbb6b6ec47b4ecca7ff43acfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  T_touchParticle: {fileID: 0}
   T_breaktower: {fileID: 198059975614214484, guid: 7a0476686964e41ac8320b7cf37868c2,
     type: 3}
   T_num: 0
@@ -64,8 +65,9 @@ MonoBehaviour:
   T_uiimage: {fileID: 744437105395686808}
   T_rangesprite: {fileID: 2845688867203453158}
   T_Towers: []
+  T_monster: {fileID: 0}
   T_towertype: 0
-  T_sprite: {fileID: 0}
+  T_sprite: {fileID: 21300000, guid: 9342efbe8916e484c8b1e5f171945ba2, type: 3}
   T_type: 0
   T_state: 0
   T_monsters2: []
@@ -19834,6 +19836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed8151cbb6b6ec47b4ecca7ff43acfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  T_touchParticle: {fileID: 0}
   T_breaktower: {fileID: 198059975614214484, guid: 7a0476686964e41ac8320b7cf37868c2,
     type: 3}
   T_num: 0
@@ -19849,8 +19852,9 @@ MonoBehaviour:
   T_uiimage: {fileID: 770232847016414606}
   T_rangesprite: {fileID: 4700896971415369041}
   T_Towers: []
+  T_monster: {fileID: 0}
   T_towertype: 0
-  T_sprite: {fileID: 0}
+  T_sprite: {fileID: 21300000, guid: 951ae33c1ffe0c249af0503709f7f1f0, type: 3}
   T_type: 0
   T_state: 0
   T_monsters2: []
@@ -25181,6 +25185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed8151cbb6b6ec47b4ecca7ff43acfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  T_touchParticle: {fileID: 0}
   T_breaktower: {fileID: 198059975614214484, guid: 7a0476686964e41ac8320b7cf37868c2,
     type: 3}
   T_num: 0
@@ -25196,8 +25201,9 @@ MonoBehaviour:
   T_uiimage: {fileID: 3850237603932125159}
   T_rangesprite: {fileID: 2081170682724206285}
   T_Towers: []
+  T_monster: {fileID: 0}
   T_towertype: 0
-  T_sprite: {fileID: 0}
+  T_sprite: {fileID: 21300000, guid: 596c643ad9ecd884a9cefa24d83b3237, type: 3}
   T_type: 0
   T_state: 0
   T_monsters2: []
@@ -82628,6 +82634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed8151cbb6b6ec47b4ecca7ff43acfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  T_touchParticle: {fileID: 0}
   T_breaktower: {fileID: 198059975614214484, guid: 7a0476686964e41ac8320b7cf37868c2,
     type: 3}
   T_num: 0
@@ -82643,8 +82650,9 @@ MonoBehaviour:
   T_uiimage: {fileID: 8304788711711243527}
   T_rangesprite: {fileID: 3388733274250337059}
   T_Towers: []
+  T_monster: {fileID: 0}
   T_towertype: 0
-  T_sprite: {fileID: 0}
+  T_sprite: {fileID: 21300000, guid: 596c643ad9ecd884a9cefa24d83b3237, type: 3}
   T_type: 0
   T_state: 0
   T_monsters2: []
@@ -97129,6 +97137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed8151cbb6b6ec47b4ecca7ff43acfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  T_touchParticle: {fileID: 0}
   T_breaktower: {fileID: 198059975614214484, guid: 7a0476686964e41ac8320b7cf37868c2,
     type: 3}
   T_num: 0
@@ -97144,8 +97153,9 @@ MonoBehaviour:
   T_uiimage: {fileID: 850773893967694154}
   T_rangesprite: {fileID: 3599801651419787052}
   T_Towers: []
+  T_monster: {fileID: 0}
   T_towertype: 0
-  T_sprite: {fileID: 0}
+  T_sprite: {fileID: 21300000, guid: 951ae33c1ffe0c249af0503709f7f1f0, type: 3}
   T_type: 0
   T_state: 0
   T_monsters2: []

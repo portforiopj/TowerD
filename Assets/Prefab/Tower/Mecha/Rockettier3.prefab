@@ -253,7 +253,7 @@ MonoBehaviour:
   T_Towers: []
   T_monster: {fileID: 0}
   T_towertype: 2
-  T_sprite: {fileID: 21300000, guid: 6edf23be37ca8db4dbaecda66e88b260, type: 3}
+  T_sprite: {fileID: 21300000, guid: 8a200c2864bbbf74bba3bdb57f7389ad, type: 3}
   T_type: 0
   T_state: 0
   T_monsters2: []

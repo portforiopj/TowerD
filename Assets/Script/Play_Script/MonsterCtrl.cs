@@ -32,14 +32,14 @@ public class MonsterCtrl : MonoBehaviour
     }
     void Awake() 
     {
-       
+
 
     }
     void Start()
     {
 
         M_map_ob2 = M_map_ob.transform.GetChild(GameSystem.Instatce.G_round).gameObject;
-
+        GameSystem.Instatce.G_count = 0;
     }
 
     // Update is called once per frame

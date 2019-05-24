@@ -8,11 +8,14 @@ public class Monster : MonoBehaviour
     public int M_num;
     public string M_name;
     public int M_hp;
+    int M_mhp;
     public int M_dmg;
+    public int M_Tadmg;
     public float M_movs;
     public bool[] M_buff=new bool[2];
     public int M_gold;
     public int M_ammor;
+    float time;
     int M_choiceint;
     public enum MonsterType
     {
@@ -25,6 +28,7 @@ public class Monster : MonoBehaviour
     public TilePass M_tilePass;
     Transform tr;
      GameObject M_player;
+    GameObject[] M_Towers;
     int M_count = 0;
     void Awake()
     {
@@ -34,23 +38,56 @@ public class Monster : MonoBehaviour
          tr = GetComponent<Transform>();
         tr.position = new Vector3(tr.position.x, tr.position.y + 0.5f, tr.position.z);
     }
-   
+   void Start()
+    {
+        M_hp += GameSystem.Instatce.G_Stage + 1 * (GameSystem.Instatce.G_round + GameSystem.Instatce.G_wave);
+        M_mhp = M_hp;
+        if(M_monsterType == MonsterType.Red)
+        {
+            M_Tadmg = M_dmg+ (GameSystem.Instatce.G_Stage + 1 * (GameSystem.Instatce.G_round + GameSystem.Instatce.G_wave));
+        }
+        if(M_monsterType == MonsterType.Blue)
+        {
+            M_ammor = 5+(GameSystem.Instatce.G_Stage + 1 * (GameSystem.Instatce.G_round + GameSystem.Instatce.G_wave));
+        }
+    }
     void Update()
     {
+        M_Towers = GameObject.FindGameObjectsWithTag("Tower");
         Move();
         if (M_hp <= 0)
         {
             DieMonster();
         }
+        if(M_monsterType == MonsterType.Green)
+        {
+            time += Time.deltaTime;
+            if (time < 1.5f)
+            {
+                if (M_mhp > M_hp)
+                {
+                    M_hp += 2+(GameSystem.Instatce.G_Stage + 1 * (GameSystem.Instatce.G_round + GameSystem.Instatce.G_wave));
+                    time = 0;
+                }
+            }
+        }
     }
     void DieMonster()
     {
-       
-        GameSystem.Instatce.G_gold[(int)M_monsterType] += M_gold; // 타입에 맞춰서 골드 획득
+        for(int i=0; i < M_Towers.Length; i++)
+        {
+            M_Towers[i].GetComponent<Tower>().T_attackmonsterdie = true;
+        }
+        int rand = Random.Range(0, 3); 
+        GameSystem.Instatce.G_gold[rand] += M_gold; 
         Destroy(gameObject);
     }
     void DieMonster2()
     {
+        for (int i = 0; i < M_Towers.Length; i++)
+        {
+            M_Towers[i].GetComponent<Tower>().T_attackmonsterdie = true;
+        }
         Destroy(gameObject);
     }
     void OnMouseDown()
@@ -79,7 +116,7 @@ public class Monster : MonoBehaviour
             M_count++;
             if (M_count == M_tilePass.T_tile_list_list[GameSystem.Instatce.G_round].GetCountOfIndex())
             {
-                Player.P_hp -= M_dmg * 2;
+                Player.P_hp -= M_dmg+M_Tadmg;
                 DieMonster2();
             }
         }

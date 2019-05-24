@@ -15,6 +15,7 @@ public class TowerBase
     {
         return T_texture_prb.Count;
     }
+   
     public GameObject SetList(int index,GameObject game)
     {
         T_texture_prb[index] = game;
@@ -70,6 +71,7 @@ public class Info : MonoBehaviour
                 I_tower_base[i].SetList(j, MyTowerBase.MyTowerList[i].GetList(j));
             }
         }
-        }
+     }
+
         
 }

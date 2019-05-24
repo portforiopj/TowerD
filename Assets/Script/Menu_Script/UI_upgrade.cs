@@ -102,17 +102,22 @@ public class UI_upgrade : MonoBehaviour
     }
     public void PlayerUpgrade(int i)
     {
-        if(UI_MainManager2.Instatce.UI_Gold >= UI_up_grade[UI_choice].Character[i] * 150+150)
+        if(UI_up_grade[UI_choice].Character[i] < 9)
         {
-            if (UI_up_grade[UI_choice].Character[i] < 9)
+            if (UI_MainManager2.Instatce.UI_Gold >= UI_up_grade[UI_choice].Character[i] * 150 + 150)
             {
+                UI_MainManager2.Instatce.UI_Gold -= (UI_up_grade[UI_choice].Character[i] * 150 + 150);
+
                 UI_up_grade[UI_choice].Character[i]++;
                 UI_up_grade[UI_choice].Setint(i, UI_player[UI_choice].P_name + i);
+                StartCoroutine(UI_MainManager2.Instatce.ResultText(UI_MainManager2.Instatce.UI_failtext, "강화가 완료되었습니다."));
                 ShowUpgrade();
+
+
             }
-            UI_MainManager2.Instatce.UI_Gold -= (UI_up_grade[UI_choice].Character[i] * 150+150);
+            else StartCoroutine(UI_MainManager2.Instatce.ResultText(UI_MainManager2.Instatce.UI_failtext, "골드가 부족합니다"));
         }
-       
-       
+        else StartCoroutine(UI_MainManager2.Instatce.ResultText(UI_MainManager2.Instatce.UI_failtext, "최대 강화 입니다."));
+
     }
 }

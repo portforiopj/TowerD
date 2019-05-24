@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     Animator P_anim;
     public string P_name;
     GameObject P_map;
-    public static int P_hp = 50;
+    public static int P_hp = 30;
     
     public bool[] P_buff = new bool[2];
     public static bool[] P_skill = new bool[2];
@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
             P_anim = GetComponent<Animator>();
             if (P_anim == null)
             {
-                P_anim = GetComponentInChildren<Animator>();
+                P_anim = GetComponentInChildren<Animator>();    
             }
 
             P_map = GameObject.Find("MapFile").transform.GetChild(GameSystem.Instatce.G_round).gameObject;
@@ -94,9 +94,14 @@ public class Player : MonoBehaviour
             {
                 P_upgrade[i] = PlayerPrefs.GetInt(P_name + i);
             }
-            GameSystem.Instatce.G_gold[0] = P_upgrade[0];
-            GameSystem.Instatce.G_gold[1] = P_upgrade[1];
-            GameSystem.Instatce.G_gold[2] = P_upgrade[2];
+            if(GameSystem.Instatce.G_round == 0)
+            {
+                GameSystem.Instatce.G_gold[0] = P_upgrade[0];
+                GameSystem.Instatce.G_gold[1] = P_upgrade[1];
+                GameSystem.Instatce.G_gold[2] = P_upgrade[2];
+            }
+           
+            
         }
         
        

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyTowerList:
   - T_texture_prb:
+    - {fileID: 3422106841056556192, guid: 189e458ec8e614d42b11f0d6477913c2, type: 3}
     - {fileID: 2302814069109338215, guid: 78308412eb808a440b160b847bf7db8c, type: 3}
-    - {fileID: 2302814069109338215, guid: 78308412eb808a440b160b847bf7db8c, type: 3}
-    - {fileID: 2302814069109338215, guid: 78308412eb808a440b160b847bf7db8c, type: 3}
+    - {fileID: 7351599196564851787, guid: 2dc460630e2cbb54d99d5b2f6ca96116, type: 3}
     - {fileID: 0}
     - {fileID: 0}
   - T_texture_prb:

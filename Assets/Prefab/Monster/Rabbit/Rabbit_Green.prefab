@@ -657,8 +657,9 @@ MonoBehaviour:
   M_Particle: {fileID: 19800000, guid: 77ec3c4e07a36814fb3169ecef41b50a, type: 3}
   M_num: 0
   M_name: 
-  M_hp: 35
+  M_hp: 45
   M_dmg: 3
+  M_Tadmg: 0
   M_movs: 1.5
   M_buff: 0000
   M_gold: 3

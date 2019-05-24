@@ -342,12 +342,13 @@ MonoBehaviour:
   M_num: 0
   M_name: 
   M_hp: 300
-  M_dmg: 10
+  M_dmg: 0
+  M_Tadmg: 0
   M_movs: 2.5
   M_buff: 0000
-  M_gold: 3
-  M_ammor: 1
-  M_monsterType: 0
+  M_gold: 0
+  M_ammor: 0
+  M_monsterType: 1
   M_sprite: {fileID: 0}
   M_tilePass: {fileID: 0}
 --- !u!1 &1262184923857050

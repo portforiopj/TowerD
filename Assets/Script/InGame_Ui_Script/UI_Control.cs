@@ -47,35 +47,35 @@ public class UI_Control : MonoBehaviour
         {
             if (Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(0) != null)
             {
-                UI_control_pannal.transform.GetChild(1).GetChild(0).GetComponent<Image>().sprite = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(0).transform.GetChild(0).GetComponent<Tower>().T_sprite;
+                UI_control_pannal.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>().sprite = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(0).transform.GetChild(0).GetComponent<Tower>().T_sprite;
                 UI_control_pannal.transform.GetChild(1).GetChild(0).GetComponent<UI_ControlButton>().Red = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(0).transform.GetChild(0).GetComponent<Tower>().T_buygold[0];
                 UI_control_pannal.transform.GetChild(1).GetChild(0).GetComponent<UI_ControlButton>().Blue = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(0).transform.GetChild(0).GetComponent<Tower>().T_buygold[1];
                 UI_control_pannal.transform.GetChild(1).GetChild(0).GetComponent<UI_ControlButton>().Green = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(0).transform.GetChild(0).GetComponent<Tower>().T_buygold[2];
             }
             if (Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(1) != null)
             {
-                UI_control_pannal.transform.GetChild(1).GetChild(1).GetComponent<Image>().sprite = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(1).transform.GetChild(0).GetComponent<Tower>().T_sprite;
+                UI_control_pannal.transform.GetChild(1).GetChild(1).GetChild(0).GetChild(0).GetComponent<Image>().sprite = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(1).transform.GetChild(0).GetComponent<Tower>().T_sprite;
                 UI_control_pannal.transform.GetChild(1).GetChild(1).GetComponent<UI_ControlButton>().Red = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(1).transform.GetChild(0).GetComponent<Tower>().T_buygold[0];
                 UI_control_pannal.transform.GetChild(1).GetChild(1).GetComponent<UI_ControlButton>().Blue = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(1).transform.GetChild(0).GetComponent<Tower>().T_buygold[1];
                 UI_control_pannal.transform.GetChild(1).GetChild(1).GetComponent<UI_ControlButton>().Green = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(1).transform.GetChild(0).GetComponent<Tower>().T_buygold[2];
             }
             if (Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(2) != null)
             {
-                UI_control_pannal.transform.GetChild(1).GetChild(2).GetComponent<Image>().sprite = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(2).transform.GetChild(0).GetComponent<Tower>().T_sprite;
+                UI_control_pannal.transform.GetChild(1).GetChild(2).GetChild(0).GetChild(0).GetComponent<Image>().sprite = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(2).transform.GetChild(0).GetComponent<Tower>().T_sprite;
                 UI_control_pannal.transform.GetChild(1).GetChild(2).GetComponent<UI_ControlButton>().Red = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(2).transform.GetChild(0).GetComponent<Tower>().T_buygold[0];
                 UI_control_pannal.transform.GetChild(1).GetChild(2).GetComponent<UI_ControlButton>().Blue = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(2).transform.GetChild(0).GetComponent<Tower>().T_buygold[1];
                 UI_control_pannal.transform.GetChild(1).GetChild(2).GetComponent<UI_ControlButton>().Green = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(2).transform.GetChild(0).GetComponent<Tower>().T_buygold[2];
             }
             if (Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(3) != null)
             {
-                UI_control_pannal.transform.GetChild(1).GetChild(3).GetComponent<Image>().sprite = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(3).transform.GetChild(0).GetComponent<Tower>().T_sprite;
+                UI_control_pannal.transform.GetChild(1).GetChild(3).GetChild(0).GetChild(0).GetComponent<Image>().sprite = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(3).transform.GetChild(0).GetComponent<Tower>().T_sprite;
                 UI_control_pannal.transform.GetChild(1).GetChild(3).GetComponent<UI_ControlButton>().Red = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(3).transform.GetChild(0).GetComponent<Tower>().T_buygold[0];
                 UI_control_pannal.transform.GetChild(1).GetChild(3).GetComponent<UI_ControlButton>().Blue = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(3).transform.GetChild(0).GetComponent<Tower>().T_buygold[1];
                 UI_control_pannal.transform.GetChild(1).GetChild(3).GetComponent<UI_ControlButton>().Green = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(3).transform.GetChild(0).GetComponent<Tower>().T_buygold[2];
             }
             if (Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(4) != null)
             {
-                UI_control_pannal.transform.GetChild(1).GetChild(4).GetComponent<Image>().sprite = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(4).transform.GetChild(0).GetComponent<Tower>().T_sprite;
+                UI_control_pannal.transform.GetChild(1).GetChild(4).GetChild(0).GetChild(0).GetComponent<Image>().sprite = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(4).transform.GetChild(0).GetComponent<Tower>().T_sprite;
                 UI_control_pannal.transform.GetChild(1).GetChild(4).GetComponent<UI_ControlButton>().Red = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(4).transform.GetChild(0).GetComponent<Tower>().T_buygold[0];
                 UI_control_pannal.transform.GetChild(1).GetChild(4).GetComponent<UI_ControlButton>().Blue = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(4).transform.GetChild(0).GetComponent<Tower>().T_buygold[1];
                 UI_control_pannal.transform.GetChild(1).GetChild(4).GetComponent<UI_ControlButton>().Green = Info.Instatnce.I_tower_base[GameSystem.Instatce.G_choiceint].GetList(4).transform.GetChild(0).GetComponent<Tower>().T_buygold[2];
@@ -94,11 +94,11 @@ public class UI_Control : MonoBehaviour
             {
                 if (UI_tower_info.transform.parent.GetChild(0).gameObject.activeSelf)
                 {
-                    UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<Image>().sprite = UI_tower_info.transform.parent.GetChild(1).GetComponent<Tower>().T_sprite;
+                    UI_control_pannal.transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Image>().sprite = UI_tower_info.transform.parent.GetChild(1).GetComponent<Tower>().T_sprite;
                     UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(1).GetComponent<Tower>().T_buygold[0];
                     UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(1).GetComponent<Tower>().T_buygold[1];
                     UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(1).GetComponent<Tower>().T_buygold[2];
-                    UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<Image>().sprite = UI_tower_info.transform.parent.GetChild(3).GetComponent<Tower>().T_sprite;
+                    UI_control_pannal.transform.GetChild(2).GetChild(1).GetChild(0).GetComponent<Image>().sprite = UI_tower_info.transform.parent.GetChild(3).GetComponent<Tower>().T_sprite;
                     UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(3).GetComponent<Tower>().T_buygold[0];
                     UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(3).GetComponent<Tower>().T_buygold[1];
                     UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(3).GetComponent<Tower>().T_buygold[2];
@@ -107,11 +107,11 @@ public class UI_Control : MonoBehaviour
                 }
                 else if (UI_tower_info.transform.parent.GetChild(1).gameObject.activeSelf)
                 {
-                    UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<Image>().sprite = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_sprite;
+                    UI_control_pannal.transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Image>().sprite = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_sprite;
                     UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[0];
                     UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[1];
                     UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[2];
-                    UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<Image>().sprite = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_sprite;
+                    UI_control_pannal.transform.GetChild(2).GetChild(1).GetChild(0).GetComponent<Image>().sprite = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_sprite;
                     UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[0];
                     UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[1];
                     UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[2];
@@ -120,12 +120,12 @@ public class UI_Control : MonoBehaviour
                 }
                 else if (UI_tower_info.transform.parent.GetChild(3).gameObject.activeSelf)
                 {
-                    UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<Image>().sprite = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_sprite;
+                    UI_control_pannal.transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Image>().sprite = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_sprite;
                     UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[0];
                     UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[1];
                     UI_control_pannal.transform.GetChild(2).GetChild(0).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(2).GetComponent<Tower>().T_buygold[2];
 
-                    UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<Image>().sprite = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_sprite;
+                    UI_control_pannal.transform.GetChild(2).GetChild(1).GetChild(0).GetComponent<Image>().sprite = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_sprite;
                     UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Red = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[0];
                     UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Blue = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[1];
                     UI_control_pannal.transform.GetChild(2).GetChild(1).GetComponent<UI_ControlButton>().Green = UI_tower_info.transform.parent.GetChild(4).GetComponent<Tower>().T_buygold[2];

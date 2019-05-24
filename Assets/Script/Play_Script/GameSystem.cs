@@ -195,6 +195,7 @@ public class GameSystem : MonoBehaviour
 
     void PlayGame()
     {
+
         GameObject[] G_monsters = GameObject.FindGameObjectsWithTag("Monster");
         if (!G_roundset)
         {
@@ -213,6 +214,11 @@ public class GameSystem : MonoBehaviour
                 GameSystem.Instatce.G_count = 0;
                 if (G_wave == 6)
                 {
+                    if(G_round == 5)
+                    {
+                        G_state = GameState.Clear;
+                        return;
+                    }
                     G_round++;
                     G_wave = 0;
                     PlayerPrefs.SetInt("Round", G_round);
@@ -230,7 +236,6 @@ public class GameSystem : MonoBehaviour
     void Clear()
     {
         PlayerPrefs.SetInt("Round", 0);
-        SceneManager.LoadScene(1);
 
     }
 

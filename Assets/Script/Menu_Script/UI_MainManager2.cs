@@ -10,6 +10,12 @@ public class Attend
     public int resource;
     public int value; 
     public string content;
+    public Attend(int a, int b, string name)
+    {
+        resource = a;
+        value = b;
+        content = name;
+    }
 }
 public class UI_MainManager2 : MonoBehaviour
 {
@@ -28,7 +34,8 @@ public class UI_MainManager2 : MonoBehaviour
     public UI_PScriptable scriptable;
     public UI_P_Psciprtable p_Psciprtable;
     public Attend[] attends;
-    
+    public bool Tutorial = true;
+    int Tuto_int;
     public int UI_P_attend = 0;
     public int UI_P_attend2;
     public GameObject UI_ppanel;
@@ -39,7 +46,6 @@ public class UI_MainManager2 : MonoBehaviour
     DateTime UI_time2;
     public GameObject UI_attend_panel;
     public Text UI_failtext;
-
     public int[] R_timer = new int[6];
 
     public float R_time;
@@ -48,13 +54,10 @@ public class UI_MainManager2 : MonoBehaviour
     DateTime Endtime;
     public int R_time2 = 0;
     public List<Attend> P_attends = new List<Attend>();
-
-    public void test()
-    {
-        PlayerPrefs.SetInt("Attend", 0);
-    }
     void Awake()
     {
+      
+
         if (instance != null)
         {
             Destroy(gameObject);
@@ -67,7 +70,15 @@ public class UI_MainManager2 : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
         }
-       
+        Tuto_int = PlayerPrefs.GetInt("Tutorial");
+        if (Tuto_int != 0)
+        {
+            Tutorial = false;
+        }
+        else
+        {
+            Tutorial = true;
+        }
         UI_Gold = PlayerPrefs.GetInt("UIGold");
         UI_PlayGold = PlayerPrefs.GetInt("UIPlayGold");
         UI_Cash = PlayerPrefs.GetInt("UICash");
@@ -84,6 +95,7 @@ public class UI_MainManager2 : MonoBehaviour
 
     void Start()
     {
+       
         SetAttend();
         Starttime = new DateTime(R_timer[0], R_timer[1], R_timer[2], R_timer[3], R_timer[4], R_timer[5]);
         Endtime = Convert.ToDateTime(DateTime.Now);
@@ -93,28 +105,30 @@ public class UI_MainManager2 : MonoBehaviour
         {
             while (timecalS > 360)
             {
+                if (UI_PlayGold >= 10)
+                {
+                    timecalS = 0;
+                    break;
+                }
                 timecalS -= 360;
                 UI_PlayGold++;
             }
             R_time += timecalS;
+            Debug.Log(UI_PlayGold);
         }
         else if (UI_PlayGold >= 10)
         {
             timecalS = 0;
         }
         UI_day = PlayerPrefs.GetInt("AttendDay");
-        if (UI_day == 0)
-        {
-            UI_time2 = Convert.ToDateTime(DateTime.Now);
-            PlayerPrefs.SetInt("AttendDay", UI_time2.Day);
-        }
+        
 
       
        
     }
     public IEnumerator ResultText(Text text, string String)
     {
-        text.gameObject.SetActive( true);
+        text.gameObject.SetActive(true);
         text.text = String;
         yield return new WaitForSeconds(1.2f);
         text.gameObject.SetActive(false);
@@ -159,18 +173,20 @@ public class UI_MainManager2 : MonoBehaviour
         }
         if (!attended)
         {
+            UI_P_attend %= 10;
             p_Psciprtable.P_PostList.Add(attends[UI_P_attend]);
             SetAttend();
-            UI_P_attend++; 
+            UI_P_attend++;
+           
             PlayerPrefs.SetInt("Attend", 1);
             PlayerPrefs.SetInt("UI_P_attend", UI_P_attend);
             UI_attend_panel.SetActive(true);
-            UI_P_attend %= 10;
+           
 
         }
 
     }
-   
+
     public void SetAttend()
     {
 
@@ -183,8 +199,8 @@ public class UI_MainManager2 : MonoBehaviour
     }
     void Update()
     {
-
-        AttendPresent();
+          
+       
         OnApplicationQuit();
         UI_time = Convert.ToDateTime(DateTime.Now);
         if (UI_day != UI_time.Day)

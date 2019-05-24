@@ -18,7 +18,7 @@ public class CameraMove : MonoBehaviour {
 
     void Start()
     {
-        Invoke("SetMap", 0.5f);
+        Invoke("SetMap", 1f);
     }
     
 

@@ -19,9 +19,11 @@ public class CharacterChoice : MonoBehaviour
     {
         GameObject a = GameObject.Find("Canvas");
 
-        a.transform.GetChild(1).gameObject.SetActive(true);
+        
         CC_choicepanal.SetActive(false);
+        
     }
+
     public void Quit()
     {
         Application.Quit();

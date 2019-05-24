@@ -8,7 +8,7 @@ public class Tower : MonoBehaviour
     GameObject T_head;
     ParticleSystem[] T_particle;
     public ParticleSystem T_breaktower;
-    public static bool T_attackmonsterdie = true;
+    public bool T_attackmonsterdie = true;
     public int T_num;
     public int T_hp;
     public int T_maxhp;
@@ -22,6 +22,7 @@ public class Tower : MonoBehaviour
     public Image T_uiimage;
     public GameObject T_rangesprite;
     public GameObject[] T_Towers;
+    public List< GameObject> T_monsters = new List<GameObject>();
     GameObject T_player;
     int T_choiceint;
     public GameObject T_monster = null;
@@ -47,6 +48,7 @@ public class Tower : MonoBehaviour
     public TowerState T_state;
     bool T_Attacking = false;
     public GameObject[] T_monsters2;
+    
 
     void TowerCheckRange(bool Check)
     {
@@ -57,7 +59,7 @@ public class Tower : MonoBehaviour
     {
         for (int i = 0; i < T_particle.Length; i++)
         {
-            Debug.Log(T_particle.Length);
+
             T_particle[i].Play();
         }
     }
@@ -80,7 +82,7 @@ public class Tower : MonoBehaviour
     void Start()
     {
         T_maxhp = T_hp;
-
+        
 
     }
     void TowerPlayState(TowerState state) // 게임 상태 
@@ -176,64 +178,122 @@ public class Tower : MonoBehaviour
     }
     IEnumerator AttackTower()
     {
+      
         T_Attacking = true;
         float distance;        
         distance = T_Dmr;
-        if(T_monster == null)
+       if(gameObject.layer!= 16)
         {
-            T_attackmonsterdie = true;
-        }
-        if (T_monsters2.Length > 0)
-        {
-            float d = 0;
-
-            for (int j = 0; j < T_monsters2.Length; j++)
+            if (T_monster == null)
             {
+                T_attackmonsterdie = true;
+            }
+            if (T_monsters2.Length > 0)
+            {
+                float d = 0;
 
-                if (T_monsters2.Length == 0)
+                for (int j = 0; j < T_monsters2.Length; j++)
                 {
-                    break;
-                }
-                if (T_monsters2[j] == null)
-                {
-                    break;
-                }
-                else d = Mathf.Abs(Vector3.Distance(T_monsters2[j].transform.position, T_tr.position));
-                if (d < distance)
-                {
-                    if (T_attackmonsterdie)
+
+                    if (T_monsters2.Length == 0)
                     {
-                        T_monster = T_monsters2[j];
-                        T_attackmonsterdie = false;
                         break;
                     }
+                    if (T_monsters2[j] == null)
+                    {
+                        break;
+                    }
+                    else d = Mathf.Abs(Vector3.Distance(T_monsters2[j].transform.position, T_tr.position));
+                    if (d < distance)
+                    {
+                        if (T_attackmonsterdie)
+                        {
+                            T_monster = T_monsters2[j];
+                            T_attackmonsterdie = false;
+                            break;
+                        }
+                    }
                 }
-            }
-            if (T_monster != null)
-            {
-                if (T_monster.GetComponent<Monster>().M_hp < T_dmg)
-                {
-                    T_attackmonsterdie = true;
-                }
-                T_monster.GetComponent<Monster>().M_hp -= T_dmg;
                 if (T_monster != null)
                 {
-                    T_hp -= T_monster.GetComponent<Monster>().M_dmg;
+                    if (T_monster.GetComponent<Monster>().M_hp < T_dmg)
+                    {
+                        T_attackmonsterdie = true;
+                    }
+                    T_monster.GetComponent<Monster>().M_hp -= (T_dmg- T_monster.GetComponent<Monster>().M_ammor);
+                    if (T_monster != null)
+                    {
+                        T_hp -= T_monster.GetComponent<Monster>().M_Tadmg;
+                    }
+                    if (CheckHead())
+                    {
+                        T_head.transform.LookAt(new Vector3(T_monster.transform.position.x, T_head.transform.position.y, T_monster.transform.position.z));
+                    }
+                    AttackParticle();
+                    if (T_hp <= 0)
+                    {
+                        T_state = TowerState.Die;
+                    }
+                    yield return new WaitForSeconds(T_Ats);
+
+
                 }
-                if (CheckHead())
-                {
-                    T_head.transform.LookAt(new Vector3(T_monster.transform.position.x, T_head.transform.position.y, T_monster.transform.position.z));
-                }
-                AttackParticle();
-                if (T_hp <= 0)
-                {
-                    T_state = TowerState.Die;
-                }
-                yield return new WaitForSeconds(T_Ats);
-            
-                
+                T_state = TowerState.Idle;
             }
-            T_state = TowerState.Idle;
+        }
+       else
+        {
+           
+            int nums = 0;
+           
+            if (T_monsters2.Length > 0)
+            {
+                
+                float d = 0;
+
+                for (int j = 0; j < T_monsters2.Length; j++)
+                {
+ 
+                    if (T_monsters2.Length == 0)
+                    {
+                        break;
+                    }
+                    if (T_monsters2[j] == null)
+                    {
+                        break;
+                    }
+                    else d = Mathf.Abs(Vector3.Distance(T_monsters2[j].transform.position, T_tr.position));
+                    if (d < distance)
+                    {
+                        GameObject a = T_monsters2[j];
+                        T_monsters.Add(a);
+                        nums++;
+                        
+                    }
+                }
+                if (nums  != 0)
+                {
+                    for(int i = 0; i < nums; i++)
+                    {
+                        Rocket T_rocket = GetComponent<Rocket>();
+                        T_rocket.ShootParticle();
+                        T_monsters[i].GetComponent<Monster>().M_hp -= (T_dmg - T_monsters[i].GetComponent<Monster>().M_ammor);
+                        T_hp -= T_monsters[i].GetComponent<Monster>().M_Tadmg;
+
+                    }
+                    
+                    AttackParticle();
+                    if (T_hp <= 0)
+                    {
+                        T_state = TowerState.Die;
+                    }
+                   
+                    yield return new WaitForSeconds(T_Ats);
+                    T_monsters.Clear();
+                }
+                T_state = TowerState.Idle;
+            }
+       
         }
     }
     void CheckHead2()

@@ -13,7 +13,7 @@ public class UI_Wave : MonoBehaviour
     public GameObject UIwave_InfoPannel;    //wave정보창 prefab
     GameObject WaveInfoPanel;   //wave 정보창
     bool IsWaveInfo_ButtonState = true;    //button 위아래 올리는 애니메이션 조건 확인 bool값, true면 아래로, false면 위로 올라가는 애니메이션 실행
-
+    public Sprite[] Wave_type;
     public Transform UIwave_WaveContentTR;  //WaveContent 부모로 잡고 그 안에 자식으로 waveinfo panel 창 생성할 값
 
     void Start()
@@ -59,12 +59,15 @@ public class UI_Wave : MonoBehaviour
         
         for (int i = 0; i < WaveCount.Count; i++)
         {
+            
             if (GameSystem.Instatce.G_round * 6 + GameSystem.Instatce.G_wave + i -3 <= GameSystem.Instatce.G_monsterctrl.M_monster_ob.Length)
             {
                 transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().sprite =
    GameSystem.Instatce.G_monsterctrl.M_monster_ob[GameSystem.Instatce.G_round * 6 + GameSystem.Instatce.G_wave + i].GetComponent<Monster>().M_sprite;
                 transform.GetChild(0).GetChild(i).GetChild(1).GetComponent<Text>().text = "X" +
     GameSystem.Instatce.G_roundunit[GameSystem.Instatce.G_round * 6 + GameSystem.Instatce.G_wave+i].ToString();
+                transform.GetChild(0).GetChild(i).GetChild(2).GetComponent<Image>().sprite = Wave_type[(int)GameSystem.Instatce.G_monsterctrl.M_monster_ob
+                    [GameSystem.Instatce.G_round * 6 + GameSystem.Instatce.G_wave + i].GetComponent<Monster>().M_monsterType];
             }
             else break;
         }

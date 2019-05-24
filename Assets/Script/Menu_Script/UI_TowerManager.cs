@@ -10,8 +10,6 @@ public class UI_TowerManager : MonoBehaviour
     public Image[] UI_image_public;
     public Image[] UI_Player_sprites;
     public Image UI_Player_sprite;
-    public GameObject[] UI_ccpanel;
-    public GameObject UI_MaskPanel;
     Player[] UI_player;
     bool TowerP = false;
     bool TChange = false;
@@ -25,6 +23,7 @@ public class UI_TowerManager : MonoBehaviour
         {
             UI_image_Player[i].enabled = false;
         }
+ 
         UI_Player_sprite.sprite = UI_player[TowerCount2].P_sprite;
         if (TowerCount2 == 0)
         {
@@ -37,6 +36,7 @@ public class UI_TowerManager : MonoBehaviour
         {
             for (int i = 0; i < Info.Instatnce.I_tower_Elemental.Length; i++)
             {
+                
                 UI_image[i].sprite = Info.Instatnce.I_tower_Elemental[i].transform.GetChild(0).GetComponent<Tower>().T_sprite;
             }
         }
@@ -65,11 +65,6 @@ public class UI_TowerManager : MonoBehaviour
     public void ChoiceCharacter(int i)
     {
         TowerCount2 = i;
-        for (int j = 0; j < UI_ccpanel.Length; j++)
-        {
-            UI_ccpanel[j].SetActive(true);
-        }
-        UI_MaskPanel.SetActive(true);
         ShowImage();
 
 
@@ -165,11 +160,7 @@ public class UI_TowerManager : MonoBehaviour
         {
             UI_Player_sprites[i].sprite = UI_player[i].P_sprite;
         }
-        if (GameObject.Find("GameSystem") != null)
-        {
-            GameSystem.Instatce.G_wave = 0;
-            GameSystem.Instatce.G_state = GameSystem.GameState.Ready;
-        }
+       
        
 
     }

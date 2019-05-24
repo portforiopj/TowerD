@@ -40,7 +40,7 @@ public class UI_Resources : MonoBehaviour
     {
         ActiveMap();
         R_texts[0].text = UI_MainManager2.Instatce.UI_Gold.ToString();
-        R_texts[1].text = UI_MainManager2.Instatce.UI_PlayGold.ToString() + " /  10";
+        R_texts[1].text = UI_MainManager2.Instatce.UI_PlayGold.ToString() + "  /  10";
         R_texts[2].text = UI_MainManager2.Instatce.UI_Cash.ToString();
         if (UI_MainManager2.Instatce.UI_PlayGold >= 10)
         {

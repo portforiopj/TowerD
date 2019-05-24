@@ -7,6 +7,7 @@ public class UI_MainManger : MonoBehaviour
 {
     public Text UI_fail_text; // 실패 텍스트
     public GameObject UI_mapfile;
+    public GameObject UI_adPanel;
     public Text UI_time_text;
     public MonsterCtrl UI_monsterctrl;
     public GameObject[] UI_mapstage;
@@ -15,15 +16,14 @@ public class UI_MainManger : MonoBehaviour
     public GameObject UI_FailPanel;
     public GameObject UI_ClearPanel;
     public Text[] UI_gold_text;
-    bool Clear = false;
-    bool Die = false;
+    public GameObject[] UI_tuto_image;
     // Start is called before the first frame update
     void Awake()
     {
         GameSystem.Instatce.G_state = GameSystem.GameState.Ready;
         GameSystem.Instatce.G_wave = 0;
         GameSystem.Instatce.G_Stage = PlayerPrefs.GetInt("Stage");
-
+       
         GameSystem.Instatce.G_round = PlayerPrefs.GetInt("Round");
         GameSystem.Instatce.G_choiceint = PlayerPrefs.GetInt("Character");
         UI_mapfile = UI_mapstage[GameSystem.Instatce.G_Stage];
@@ -35,24 +35,52 @@ public class UI_MainManger : MonoBehaviour
 
         UI_mapfile.transform.GetChild(GameSystem.Instatce.G_round).gameObject.SetActive(true);
     }
+    public void Startad()
+    {
+        GoogleMobileAdsDemoScript.instance.UserOptToWatchAd();
+    }
+    public void SkipTuto()
+    {
+        PlayerPrefs.SetInt("Tutorial", 1);
+        UI_MainManager2.Instatce.Tutorial = false;
+    }
+    void TutorialPlay()
+    {
+        
+    }
+    public void QuitPanel(GameObject Game)
+    {
+        Game.SetActive(false);
+    }
     public void ReStartGame()
     {
         UI_quitpanel.SetActive(false);
+    }
+    public void ShowRewardAd()
+    {
+        UI_adPanel.SetActive(true);
+        UI_FailPanel.SetActive(false);
     }
     public void RetryGame(int i)
     {
 
      
         GameOver();
-        Die = false;
+        if (i == 1)
+        {
+            PlayerPrefs.SetInt("Scene", 0);
+        }
         PlayerPrefs.SetInt("LoadScene", i);
         SceneManager.LoadScene(3);      
     }
     public void RetryGame2(int i)
     {
 
-        Clear =false;
         ClearGame();
+        if (i == 1)
+        {
+            PlayerPrefs.SetInt("Scene", 0);
+        }
         PlayerPrefs.SetInt("LoadScene", i);
         SceneManager.LoadScene(3);
 
@@ -84,11 +112,18 @@ public class UI_MainManger : MonoBehaviour
             UI_mapstage[i].SetActive(false);
         }
         UI_mapstage[GameSystem.Instatce.G_Stage].SetActive(true);
+        if (UI_MainManager2.Instatce.Tutorial)
+        {
+            for (int i = 0; i < UI_tuto_image.Length; i++)
+            {
+                UI_tuto_image[i].SetActive(true);
+            }
+        }
+       
        
     }
     void StartRound()
     {
-        Tower.T_attackmonsterdie = true;
         UI_monsterctrl.StartRound();
         
         
@@ -96,11 +131,6 @@ public class UI_MainManger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        if ((GameSystem.Instatce.G_round * 6) + GameSystem.Instatce.G_wave >= UI_monsterctrl.M_monster_ob.Length)
-        {
-            GameSystem.Instatce.G_state = GameSystem.GameState.Clear;
-        }
         if (GameSystem.Instatce.G_state == GameSystem.GameState.Ready)
         {
             UI_time_text.text = GameSystem.Instatce.G_state.ToString() + " : " + GameSystem.Instatce.G_time.ToString("F0");

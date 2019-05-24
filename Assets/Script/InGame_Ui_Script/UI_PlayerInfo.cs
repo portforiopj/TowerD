@@ -22,7 +22,7 @@ public class UI_PlayerInfo : MonoBehaviour
     {
         UI_player = GameObject.Find("Player").transform.GetChild(GameSystem.Instatce.G_choiceint).GetComponent<Player>();
         //뒤에 할당 값 전부 test 용
-        Player.P_hp = 50;
+        Player.P_hp = 30;
         UI_PlayMhp = Player.P_hp;
         UIPlay_Sprite.sprite = UI_player.P_sprite;
     }

@@ -116,19 +116,19 @@ public class Tower : MonoBehaviour
         }
         T_rangecheck = !check;
         GameObject a = GameObject.Find("Canvas");
-        a.transform.GetChild(6).GetComponent<UI_Control>().UI_tower_info = null;
-        if (a.transform.GetChild(6).GetChild(0).gameObject.activeSelf || a.transform.GetChild(5).GetChild(2).gameObject.activeSelf)
+        a.transform.GetChild(9).GetComponent<UI_Control>().UI_tower_info = null;
+        if (a.transform.GetChild(9).GetChild(0).gameObject.activeSelf || a.transform.GetChild(8).GetChild(2).gameObject.activeSelf)
         {
-            a.transform.GetChild(6).GetChild(0).gameObject.SetActive(check);
-            a.transform.GetChild(6).GetChild(2).gameObject.SetActive(!check);
+            a.transform.GetChild(9).GetChild(0).gameObject.SetActive(check);
+            a.transform.GetChild(9).GetChild(2).gameObject.SetActive(!check);
 
         }
-        if (a.transform.GetChild(6).GetChild(1).gameObject.activeSelf)
+        if (a.transform.GetChild(9).GetChild(1).gameObject.activeSelf)
         {
-            a.transform.GetChild(6).GetChild(1).gameObject.SetActive(check);
-            a.transform.GetChild(6).GetChild(2).gameObject.SetActive(!check);
+            a.transform.GetChild(9).GetChild(1).gameObject.SetActive(check);
+            a.transform.GetChild(9).GetChild(2).gameObject.SetActive(!check);
         }
-        a.transform.GetChild(6).GetComponent<UI_Control>().UI_tower_info = gameObject.GetComponent<Tower>();
+        a.transform.GetChild(9).GetComponent<UI_Control>().UI_tower_info = gameObject.GetComponent<Tower>();
     }
     void OnMouseDown()
     {

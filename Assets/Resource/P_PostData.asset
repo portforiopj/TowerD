@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c10a9de61010764bbb4598134f5b4bc, type: 3}
   m_Name: P_PostData
   m_EditorClassIdentifier: 
-  P_PostList: []
+  P_PostList:
+  - resource: 2
+    value: 20
+    content: "\uC6B0\uD3B8"

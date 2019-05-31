@@ -158,6 +158,7 @@ public class UI_MainManager2 : MonoBehaviour
         d.GetComponent<UI_Pinfo>().P_info_val = b;
         d.GetComponent<UI_Pinfo>().P_info_text[1].text = c;
         d.transform.SetParent(tr);
+        d.SetActive(true);
     }
     public  void AttendPresent()
     {

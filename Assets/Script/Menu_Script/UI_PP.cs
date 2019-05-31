@@ -22,7 +22,7 @@ public class UI_PP : MonoBehaviour
             UI_MainManager2.Instatce.SendP(UI_MainManager2.Instatce.P_attends[i].resource, UI_MainManager2.Instatce.P_attends[i].value,
                 UI_MainManager2.Instatce.P_attends[i].content,
                 PP);
-
+          
 
         }
 

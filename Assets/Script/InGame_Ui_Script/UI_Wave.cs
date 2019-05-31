@@ -23,6 +23,7 @@ public class UI_Wave : MonoBehaviour
         {
             WaveInfoPanel = Instantiate(UIwave_InfoPannel); //생성
             WaveInfoPanel.transform.SetParent(UIwave_WaveContentTR);    //WaveContent 부모로 잡고 그 안에 자식으로 waveinfo panel 창 생성
+            WaveInfoPanel.SetActive(true);
         }
 
     }

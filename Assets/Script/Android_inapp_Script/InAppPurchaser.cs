@@ -9,6 +9,14 @@ public class InAppPurchaser : MonoBehaviour, IStoreListener
     private static IStoreController storeController;
     private static IExtensionProvider extensionProvider;
 
+    static InAppPurchaser instance;
+    public static InAppPurchaser Instatce
+    {
+        get
+        {
+            return instance;
+        }
+    }
     #region 상품ID
     // 상품ID는 구글 개발자 콘솔에 등록한 상품ID와 동일하게 해주세요.
     public const string productId1 = "cash_50";
@@ -17,6 +25,21 @@ public class InAppPurchaser : MonoBehaviour, IStoreListener
     public const string productId4 = "cash_550";
     public const string productId5 = "cash_1800";
     #endregion
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+
+        }
+        else
+        {
+
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+
+        }
+    }
 
     void Start()
     {

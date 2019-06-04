@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Tower : MonoBehaviour
 {
+    public ParticleManager particleManager;
     public ParticleSystem T_touchParticle;
     GameObject T_head;
     ParticleSystem[] T_particle;
@@ -77,7 +78,9 @@ public class Tower : MonoBehaviour
         T_rangesprite.transform.localScale = new Vector3(T_Dmr * 9.6f, T_Dmr * 9.6f, 1f);
         T_monster = null;
         T_particle = gameObject.GetComponentsInChildren<ParticleSystem>();
-       
+        particleManager = GameObject.Find("ParticleManager").GetComponent<ParticleManager>();
+
+
     }
     void Start()
     {
@@ -134,8 +137,8 @@ public class Tower : MonoBehaviour
     {
         if (Player.P_skill[1] == true)
         {
-            Instantiate(T_touchParticle.gameObject,transform.position,Quaternion.identity);
-            T_touchParticle.Play();
+            
+            particleManager.AutoParticleSet(5,transform);
             T_hp += 10;
             for (int j = 0; j < GameSystem.Instatce.G_gold.Length; j++)
             {
@@ -163,17 +166,17 @@ public class Tower : MonoBehaviour
         {
             gameObject.transform.parent.parent.GetComponent<MeshRenderer>()
             .material = Info.Instatnce.I_node_mat[3];
-            Instantiate(T_breaktower.gameObject, transform.position, transform.rotation);
-            T_breaktower.Play();
+           
+            particleManager.AutoParticleSet(6, transform);
             Destroy(gameObject);
         }
         else
         {
             gameObject.transform.parent.parent.GetComponent<MeshRenderer>()
            .material = Info.Instatnce.I_node_mat[2];
-            Instantiate(T_breaktower.gameObject, transform.position, transform.rotation);
-            T_breaktower.Play();
-           Destroy(gameObject);
+            
+            particleManager.AutoParticleSet(6, transform);
+            Destroy(gameObject);
         }
     }
     IEnumerator AttackTower()
@@ -275,8 +278,7 @@ public class Tower : MonoBehaviour
                 {
                     for(int i = 0; i < nums; i++)
                     {
-                        Rocket T_rocket = GetComponent<Rocket>();
-                        T_rocket.ShootParticle();
+                        particleManager.ParticleSet(gameObject,T_monsters[i].transform);                                 
                         T_monsters[i].GetComponent<Monster>().M_hp -= (T_dmg - T_monsters[i].GetComponent<Monster>().M_ammor);
                         T_hp -= T_monsters[i].GetComponent<Monster>().M_Tadmg;
 

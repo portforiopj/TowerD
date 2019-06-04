@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-
 [System.Serializable]
 public class Attend
 {
@@ -31,7 +30,6 @@ public class UI_MainManager2 : MonoBehaviour
     public int UI_Gold;
     public int UI_PlayGold;
     public int UI_Cash;
-    public UI_PScriptable scriptable;
     public UI_P_Psciprtable p_Psciprtable;
     public Attend[] attends;
     public bool Tutorial = true;
@@ -114,7 +112,6 @@ public class UI_MainManager2 : MonoBehaviour
                 UI_PlayGold++;
             }
             R_time += timecalS;
-            Debug.Log(UI_PlayGold);
         }
         else if (UI_PlayGold >= 10)
         {
@@ -149,6 +146,7 @@ public class UI_MainManager2 : MonoBehaviour
         PlayerPrefs.SetInt("UIPlayGold", UI_PlayGold);
         PlayerPrefs.SetInt("UICash", UI_Cash);
         PlayerPrefs.SetInt("UI_P_attend", UI_P_attend);
+
     }
     public void SendP(int a, int b, string c,GameObject d)
     {

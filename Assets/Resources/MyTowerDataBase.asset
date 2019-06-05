@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58cba6ae71c7df54a90c45df9ef441aa, type: 3}
+  m_Name: MyTowerDataBase
+  m_EditorClassIdentifier: 
+  MyTowerList:
+  - T_texture_prb:
+    - {fileID: 3422106841056556192, guid: 189e458ec8e614d42b11f0d6477913c2, type: 3}
+    - {fileID: 2302814069109338215, guid: 78308412eb808a440b160b847bf7db8c, type: 3}
+    - {fileID: 7351599196564851787, guid: 2dc460630e2cbb54d99d5b2f6ca96116, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+  - T_texture_prb:
+    - {fileID: 8215489744410526505, guid: 4170dd4f71728eb4696d818a50230367, type: 3}
+    - {fileID: 2114531434753634913, guid: be1aca3a7e1e5da498283daa1e31c85a, type: 3}
+    - {fileID: 4619785544031174271, guid: 31ff5644dedf09946ac297b3a7675b0c, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+  - T_texture_prb:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
